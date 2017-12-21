@@ -1,24 +1,137 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿html {
+    height: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+a, abbr, address, article, aside, audio, b, blockquote, body, button, canvas, caption, cite, code, dd, del, details, dfn, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, input, ins, kbd, label, legend, li, mark, menu, nav, object, ol, p, pre, q, samp, section, select, small, span, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    line-height: 1;
+    vertical-align: baseline;
+    background: transparent;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+.navbar-default {
+    background: transparent !important;
+    border : 0px !important;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.header {
+    padding: 30px 0;
+    background-color: #fff;
+}
+
+.navbar-default .nav>li>a {
+    color: #3b3d42!important;
+    border: 0!important;
+    font-weight: 500!important;
+    margin: 0!important;
+    letter-spacing: 0;
+    font-size: 15px;
+    padding: 10px 15px!important;
+}
+.navbar-default ul {
+    padding-top: 25px;
+}
+
+    .pagination a, .navbar-default .navbar-nav .open .dropdown-menu > li > a, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus, mark, #owl-team .owl-nav [class*="owl-"], .grid figcaption, .blogging:hover, .btn-primary, .progress-bar, .navbar-default .navbar-nav > li:hover > a, .navbar-default .navbar-nav > li:focus > a, .navbar-default .dropdown-menu, .navbar-default .nav > li > a.active, .navbar-default .nav > li > a:hover, .navbar-default .nav > li > a:focus, .dark-yellow {
+        color: #fff !important;
+        background-color: #ffa81d !important;
+    }
+
+ .general-title hr {
+    border-color: #ffa81d;
+}
+
+ .general-title hr {
+    width: 45px;
+    border-width: 3px;
+    margin: 15px auto;
+}
+
+ .general-title h4 {
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+ .general-title .lead {
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    font-style: italic;
+}
+
+ .general-title {
+    margin-bottom: 60px;
+    display: block;
+    position: relative;
+}
+
+ .why-us img {
+    margin: 0 auto;
+    display: block;
+}
+
+ .why-us strong {
+    font-size: 18px;
+    padding: 0;
+    color: #25292c;
+    margin: 20px auto 15px;
+    display: block;
+    font-weight: 700;
+}
+
+ .rating i, span.clients-name, .latest-tweets a, .block-text a small, .breadcrumb>.active, .check li:before, .latest-tweets p:before, .shop-desc small, .category_title, .portfolio-filter ul li i, .team-member h4 span, .readmore, .slider_layer_01 i, .topbar.dark .social a:hover, #quote-carousel blockquote small, .social a:hover, a:hover {
+    color: #f79800;
+}
+
+ .ui-widget-header, .dark-yellow .services-1 i, .dark {
+    color: #fff!important;
+    border-color: #3b3d42!important;
+    background-color: #3b3d42!important;
+}
+
+ .grey {
+    border-bottom: 1px solid #ededed;
+    border-top: 1px solid #ededed;
+    background-color: #f7f7f7;
+}
+
+
+.section {
+    position: relative;
+    display: block;
+    padding: 80px 0;
+}
+
+.team-square {
+    padding: 20px;
+    background-color: #fff;
+}
+.entry {
+    position: relative;
+}
+
+h4 a, .team-member h4 {
+    font-size: 16px;
+    padding: 0;
+    color: #25292c;
+    margin: 25px auto 15px;
+    display: block;
+    font-weight: 700;
+}
+
+.team-member img {
+    width: 100%;
 }
