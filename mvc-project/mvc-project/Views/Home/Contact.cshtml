@@ -1,6 +1,56 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<!--<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>-->
 
+<section class="section white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-xs-12">
+                <div class="appoform-wrapper">
+                    <header class="form-header">
+                        <h3>Find on Map</h3>
+                    </header>
+                    <div id="map"></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <div class="appoform-wrapper">
+                    <div id="message"></div>
+                    <form id="contactform" action="#" name="contactform" method="post">
+                        <header class="form-header">
+                            <h3>Contact Form</h3>
+                        </header>
+                        <div class="post-body-form text-center">
+                            <p>
+                                In order to provide better service to you, PetVet Veterinary<br> Clinic
+                                It is working with the appointment system. Please fill in the<br> following form completely.
+                            </p>
+                        </div>
+                        <fieldset class="row-fluid appoform">
+                            <div class="col-md-12">
+                                <label class="sr-only">Your name</label>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Name *">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="sr-only">Email address</label>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Email *">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="sr-only">Phone number</label>
+                                <input type="text" name="name" id="website" class="form-control" placeholder="Website">
+                            </div>
+                            <div class="col-md-12">
+                                <textarea class="form-control" name="comments" id="comments" rows="6" placeholder="Extra notes.."> </textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" value="SEND" id="submit" class="btn btn-primary btn-block">Send Message</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

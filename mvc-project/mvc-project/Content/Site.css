@@ -219,3 +219,103 @@ p, .copyright a {
     color: #fff;
     padding: 0!important;
 }
+
+.appoform-wrapper {
+    background-color: #fff;
+    border: 1px solid #ededed;
+    padding: 0 20px 40px 20px;
+}
+
+.pager a, .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .plan .head, .tag-widget a:hover, .dropdown-menu>li:hover>a, .btn-primary:hover, .form-header, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .services-1 i, .pitem .st, .btn-primary.active, .open>.dropdown-toggle.btn-primary, .magnifier .st:hover, .slider_btn .btn-primary {
+    border-color: #f79800!important;
+    background-color: #f79800!important;
+    color: #fff!important;
+}
+#map {
+    height: 538px;
+    width: 100%;
+}
+.form-header {
+    padding: 20px 0;
+    text-align: center;
+    margin-top: -30px;
+    border-radius: 3px;
+    margin-bottom: 30px;
+}
+
+.post-body-form {
+    margin-bottom: 30px;
+}
+
+p {
+    padding: 0 0 20px;
+}
+
+p {
+    line-height: 1.618;
+}
+
+fieldset {
+    min-width: 0;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    padding-top: .8em;
+    padding-bottom: .8em;
+}
+
+.appoform .form-control {
+    margin-bottom: 30px;
+    background-color: transparent;
+    color: #5d5d5d;
+    border: 0;
+    border-bottom: 2px solid #ededed;
+    font-size: 13px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .8em .8em;
+    background-image: none;
+    border: 1px solid #e6e6e6;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    -o-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+input, textarea, button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+input, textarea, button, select {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+}
+
+input, select {
+    line-height: normal;
+}
+
+.btn-primary {
+    color: #ffffff;
+    background-color:  #ffa81d !important;
+    border-color: #ffa81d !important;
+}
