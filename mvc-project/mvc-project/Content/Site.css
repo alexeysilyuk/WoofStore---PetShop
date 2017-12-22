@@ -135,3 +135,87 @@ h4 a, .team-member h4 {
 .team-member img {
     width: 100%;
 }
+
+.footer {
+    padding: 80px 0;
+    position: relative;
+    display: block;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.img-responsive, .carousel-inner > .item > img, .carousel-inner > .item > a > img, .thumbnail > img, .thumbnail a > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+animate.css%2bb…--DkP.css:2940
+img {
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.ui-widget-header, .dark-yellow .services-1 i, .dark {
+    color: #fff!important;
+    border-color: #3b3d42!important;
+    background-color: #3b3d42!important;
+}
+
+.footer .social {
+    margin-top: 30px;
+    display: block;
+}
+
+.content-widget .widget-title, .footer .widget-title {
+    margin-bottom: 20px;
+}
+
+.footer .widget-title h4 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 21px;
+}
+
+.footer .widget ul li a, .footer .widget ul, .footer .footer p, .footer a {
+    color: #fff;
+    font-weight: 500;
+}
+
+.footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.copyright {
+    background-color: #2b2d32;
+    padding: 20px 0;
+    display: block;
+    position: relative;
+    text-transform: capitalize;
+}
+
+.copyright p, .copyright a {
+    font-weight: 600!important;
+}
+
+p, .copyright a {
+    font-weight: 600!important;
+}
+
+.footer .widget ul li {
+    list-style: none;
+    margin-bottom: 14px;
+}
+
+.copyright a, .copyright p {
+    color: #fff;
+    padding: 0!important;
+}
