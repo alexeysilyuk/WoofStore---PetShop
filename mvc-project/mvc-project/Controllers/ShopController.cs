@@ -13,5 +13,11 @@ namespace mvc_project.Controllers
         {
             return View("Shop");
         }
+
+
+        public ActionResult Cart()
+        {
+             return View();
+        }
     }
 }
