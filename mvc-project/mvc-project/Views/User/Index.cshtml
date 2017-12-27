@@ -9,53 +9,53 @@
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
 
-<h2>Add New User</h2>
+<fieldset class="row-fluid appoform">
+    <form action="UserSubmit" method="post">
 
-<form action="UserSubmit" method="post">
+        <table class="table">
+            <tr>
+                <td>First name:</td>
+                <td>@Html.TextBoxFor(m => m.user.fname, new { @class = "form-control" })   <div style="color:red">  @Html.ValidationMessageFor(x => x.user.fname)</div> </td>
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td>@Html.TextBoxFor(m => m.user.lname, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.lname)</div></td>
+            </tr>
+            <tr>
+                <td>Customer number:</td>
+                <td>@Html.TextBoxFor(m => m.user.ID, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.ID)</div></td>
+            </tr>
 
-    <table>
+            <tr>
+                <td>Start Money:</td>
+                <td>@Html.TextBoxFor(m => m.user.money, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.money)</div></td>
+            </tr>
+
+
+        </table>
+        <br />
+        <button type="submit" id="submit" class="btn btn-primary btn-block">Add Customer</button>
+
+    </form>
+    </fieldset>
+
+    <table class="table table-condensed">
         <tr>
-            <td>First name:</td>
-            <td>@Html.TextBoxFor(m => m.user.FirstName)   <div style="color:red">  @Html.ValidationMessageFor(x => x.user.FirstName)</div> </td>
-        </tr>
-        <tr>
-            <td>Last name:</td>
-            <td>@Html.TextBoxFor(m => m.user.LastName)  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.LastName)</div></td>
-        </tr>
-        <tr>
-            <td>Customer number:</td>
-            <td>@Html.TextBoxFor(m => m.user.ID)  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.ID)</div></td>
+            <td>ID</td>
+            <td>FirstName</td>
+            <td>LastName</td>
+            <td>Money</td>
         </tr>
 
-        <tr>
-            <td>Start Money:</td>
-            <td>@Html.TextBoxFor(m => m.user.Money)  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.Money)</div></td>
-        </tr>
-
+        @{ foreach (User obj in Model.users)
+            {
+                <tr>
+                    <td>@obj.ID</td>
+                    <td>@obj.fname</td>
+                    <td>@obj.lname</td>
+                    <td>@obj.money</td>
+            </tr>
+            }
+        }
 
     </table>
-    <br />
-    <input id="btnSubmit" type="submit" value="Add Customer" />
-
-</form>
-
-<table>
-    <tr>
-        <td>ID</td>
-        <td>FirstName</td>
-        <td>LastName</td>
-        <td>Money</td>
-    </tr>
-
-    @{ foreach (User obj in Model.users)
-            {
-            <tr>
-                <td>@obj.ID</td>
-                <td>@obj.FirstName</td>
-                <td>@obj.LastName</td>
-                <td>@obj.Money</td>
-            </tr>
-        }
-    }
-
-</table>
