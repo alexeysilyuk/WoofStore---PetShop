@@ -23,7 +23,7 @@ namespace mvc_project.Models
 
         [Required]
         [RegularExpression("^([0-9]+)$", ErrorMessage = "Price has to be number")]
-        public int price { get; set; }
+        public int money { get; set; }
 
         [Required]
         public string photo { get; set; }

@@ -886,3 +886,147 @@ a:active, a:focus, a:hover, a:visited {
     font-weight: 600;
     margin: 0 5px 0 0;
 }
+
+.table-responsive {
+    overflow-x: auto;
+    min-height: .01%;
+}
+
+#cart-table {
+    border-bottom: 1px solid #cdd2d8;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+}
+
+table {
+    background-color: transparent;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+#cart-table thead tr th:first-child {
+    border-left: 0 none;
+}
+
+#cart-table thead tr th {
+    border-left: 1px solid #cdd2d8;
+    padding: 20px;
+}
+
+#cart-table th, #cart-table td {
+    padding: 23px;
+    position: relative;
+    vertical-align: middle;
+}
+
+#cart-table th, #cart-table td {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+
+#cart-table th, #cart-table td {
+    padding: 23px;
+    position: relative;
+    vertical-align: middle;
+}
+
+#cart-table th, #cart-table td {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    border-color: #cdd2d8;
+}
+
+.table-condensed>thead>tr>th, .table-condensed>tbody>tr>th, .table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td, .table-condensed>tbody>tr>td, .table-condensed>tfoot>tr>td {
+    padding: .75em;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    padding: 1em;
+    vertical-align: top;
+    border-top: 1px solid #e6e6e6;
+}
+
+.product-remove {
+    max-width: none;
+    min-width: 25px;
+    text-align: left;
+    width: 25px;
+}
+
+a.remove {
+    float: none;
+    font-size: 30px;
+    height: 18px;
+    line-height: 18px;
+    position: relative;
+    top: 1px;
+    width: auto;
+}
+
+a:active, a:focus, a:hover, a:visited {
+    outline: 0;
+}
+
+.btn, a {
+    outline: 0!important;
+    text-decoration: none!important;
+}
+
+a {
+    color: #333;
+}
+
+#cart-table thead tr th {
+    border-left: 1px solid #cdd2d8;
+    padding: 20px;
+}
+
+#cart-table th, #cart-table td {
+    padding: 23px;
+    position: relative;
+    vertical-align: middle;
+}
+
+#cart-table th, #cart-table td {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+
+.table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>td {
+    background-color: #f7f7f7;
+}
+
+.table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>td {
+    border-top: 0;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    border-color: #cdd2d8;
+}
+
+#cart-table .media img {
+    margin-top: 0;
+    width: 100px!important;
+}
+A.style.css%2bc…tDm8q7vQ.css:7
+.media img {
+    width: 65px;
+    margin-right: 0;
+}

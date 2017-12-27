@@ -203,6 +203,7 @@
     <Content Include="Views\Home\myInfo.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shop\Shop.cshtml" />
+    <Content Include="Views\Shop\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
