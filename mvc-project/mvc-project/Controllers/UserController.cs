@@ -24,10 +24,14 @@ namespace mvc_project.Controllers
         public ActionResult UserSubmit()
         {
             User obj = new Models.User();
-            obj.fname = Request.Form["user.FirstName"];
-            obj.lname = Request.Form["user.LastName"];
+            obj.fname = Request.Form["user.fname"];
+            obj.lname = Request.Form["user.fname"];
             obj.ID = Int32.Parse(Request.Form["user.ID"]);
-            obj.money = Int32.Parse(Request.Form["user.Money"]);
+            obj.money = Int32.Parse(Request.Form["user.money"]);
+            obj.photo = Request.Form["user.photo"];
+            obj.email = Request.Form["user.email"];
+            obj.phone = Request.Form["user.phone"];
+            obj.isAdmin = false;
 
             if (ModelState.IsValid)
             {

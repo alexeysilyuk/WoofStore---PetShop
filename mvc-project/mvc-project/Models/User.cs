@@ -28,7 +28,6 @@ namespace mvc_project.Models
         [Required]
         public string photo { get; set; }
 
-        [Required]
         public Boolean isAdmin { get; set; }
 
         [Required]

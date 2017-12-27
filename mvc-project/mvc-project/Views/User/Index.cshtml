@@ -12,31 +12,56 @@
 <fieldset class="row-fluid appoform">
     <form action="UserSubmit" method="post">
 
-        <table class="table">
-            <tr>
-                <td>First name:</td>
-                <td>@Html.TextBoxFor(m => m.user.fname, new { @class = "form-control" })   <div style="color:red">  @Html.ValidationMessageFor(x => x.user.fname)</div> </td>
-            </tr>
-            <tr>
-                <td>Last name:</td>
-                <td>@Html.TextBoxFor(m => m.user.lname, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.lname)</div></td>
-            </tr>
-            <tr>
-                <td>Customer number:</td>
-                <td>@Html.TextBoxFor(m => m.user.ID, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.ID)</div></td>
-            </tr>
+        <div class="col-md-12 col-xs-12">
 
-            <tr>
-                <td>Start Money:</td>
-                <td>@Html.TextBoxFor(m => m.user.money, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.money)</div></td>
-            </tr>
+            <div class="col-md-6">
+                <strong>First name:</strong>
+                @Html.TextBoxFor(m => m.user.fname, new { @class = "form-control" })   <div style="color:red">  @Html.ValidationMessageFor(x => x.user.fname)</div>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Last name:</strong>
+                @Html.TextBoxFor(m => m.user.lname, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.lname)</div>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Id</strong>
+                @Html.TextBoxFor(m => m.user.ID, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.ID)</div>
+                </div>
+
+            <div class="col-md-6">
+                <strong>Money</strong>
+                @Html.TextBoxFor(m => m.user.money, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.money)</div>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Photo</strong>
+                @Html.TextBoxFor(m => m.user.photo, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.photo)</div>
+            </div>
+
+            <div class="col-md-6">
+                <!--<strong>is Admin</strong>-->
+               @Html.HiddenFor(m => m.user.isAdmin)
+            </div>
+
+            <div class="col-md-6">
+                <strong>Email</strong>
+                @Html.TextBoxFor(m => m.user.email, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.email)</div>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Phone</strong>
+                @Html.TextBoxFor(m => m.user.phone, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.user.phone)</div>
+            </div>
 
 
-        </table>
-        <br />
-        <button type="submit" id="submit" class="btn btn-primary btn-block">Add Customer</button>
+                <button type="submit" id="submit" class="btn btn-primary btn-block">Add Customer</button>
 
-    </form>
+            </div>
+            <br />
+
+
+</form>
     </fieldset>
 
     <table class="table table-condensed">
@@ -45,6 +70,11 @@
             <td>FirstName</td>
             <td>LastName</td>
             <td>Money</td>
+            <td>Photo</td>
+            <td>isAdmin</td>
+            <td>Email</td>
+            <td>Phone</td>
+
         </tr>
 
         @{ foreach (User obj in Model.users)
@@ -54,6 +84,10 @@
                     <td>@obj.fname</td>
                     <td>@obj.lname</td>
                     <td>@obj.money</td>
+                    <td>@obj.photo</td>
+                    <td>@obj.isAdmin</td>
+                    <td>@obj.email</td>
+                    <td>@obj.phone</td>
             </tr>
             }
         }
