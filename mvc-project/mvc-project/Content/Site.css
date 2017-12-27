@@ -1025,8 +1025,56 @@ a {
     margin-top: 0;
     width: 100px!important;
 }
-A.style.css%2bc…tDm8q7vQ.css:7
+
 .media img {
     width: 65px;
     margin-right: 0;
+}
+
+.shop-desc h3 {
+    font-weight: 700;
+    letter-spacing: -.5px;
+    font-size: 21px;
+}
+
+
+.product-images img {
+    width: 100%;
+    border: 1px solid #ededed;
+}
+
+.product-images ul.thumbnail {
+    padding: 0;
+}
+
+.thumbnail {
+    display: block;
+    border-radius: 2px;
+    -webkit-transition: border .2s ease-in-out;
+    -moz-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+
+.product-images ul.thumbnail li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 5px 0;
+    margin-top: 10px;
+    max-width: 29%;
+}
+
+.shop-desc small {
+    font-size: 24px!important;
+    display: block;
+    font-weight: 600;
+    margin: 0 0 20px;
+}
+
+.shop-desc .rating {
+    margin-bottom: 15px;
+}
+
+.shop-desc .btn {
+    margin: 20px 0;
 }

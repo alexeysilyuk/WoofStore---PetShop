@@ -19,5 +19,10 @@ namespace mvc_project.Controllers
         {
              return View();
         }
+
+        public ActionResult SingleItem()
+        {
+            return View();
+        }
     }
 }

@@ -9,17 +9,17 @@ namespace mvc_project.Models
     public class ShopItem
     {
         [Required]
-        public string FirstName { get; set; }
+        public string Name { get; set; }
         [Required]
         [StringLength(10, MinimumLength = 2)]
-        public string LastName { get; set; }
+        public string Description { get; set; }
 
 
         [Key]
         [Required]
-        public int ID { get; set; }
+        public int price { get; set; }
 
         [Required]
-        public int Money { get; set; }
+        public int photo_url { get; set; }
     }
 }

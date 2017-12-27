@@ -19,9 +19,6 @@ namespace mvc_project.Models
         public int[] items { get; set; }
 
         [Required]
-        public Boolean isNew { get; set;  }
-
-        [Required]
         public int status { get; set; }
     }
 }
