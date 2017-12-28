@@ -170,3 +170,47 @@ C:\Users\root\Desktop\שנה ג\תקשורת\Github\mvc-project\mvc-project\bin\
 C:\Users\root\Desktop\שנה ג\תקשורת\Github\mvc-project\mvc-project\obj\Debug\mvc-project.csprojResolveAssemblyReference.cache
 C:\Users\root\Desktop\שנה ג\תקשורת\Github\mvc-project\mvc-project\obj\Debug\mvc-project.dll
 C:\Users\root\Desktop\שנה ג\תקשורת\Github\mvc-project\mvc-project\obj\Debug\mvc-project.pdb
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\roslyn\csc.exe
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\roslyn\vbc.exe
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\roslyn\VBCSCompiler.exe
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\mvc-project.dll.config
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\mvc-project.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\mvc-project.pdb
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\Antlr3.Runtime.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\EntityFramework.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\EntityFramework.SqlServer.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\Newtonsoft.Json.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.Helpers.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.Mvc.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.Optimization.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.Razor.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.WebPages.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.WebPages.Razor.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\WebGrease.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\EntityFramework.xml
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\EntityFramework.SqlServer.xml
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.Helpers.xml
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.Mvc.xml
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.Optimization.xml
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.Razor.xml
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.WebPages.xml
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\System.Web.WebPages.Razor.xml
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\Antlr3.Runtime.pdb
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\bin\Newtonsoft.Json.xml
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\obj\Debug\mvc-project.csprojResolveAssemblyReference.cache
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\obj\Debug\mvc-project.dll
+C:\Users\Server\Desktop\MVC\asp.net\mvc-project\mvc-project\obj\Debug\mvc-project.pdb

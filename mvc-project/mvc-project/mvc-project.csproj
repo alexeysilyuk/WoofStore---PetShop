@@ -131,6 +131,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DAL\ShopItemDAL.cs" />
     <Compile Include="DAL\UserDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -206,6 +207,7 @@
     <Content Include="Views\Shop\Cart.cshtml" />
     <Content Include="Views\Shop\SingleItem.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Shop\addItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
