@@ -1,6 +1,12 @@
-﻿
+﻿@model mvc_project.Models.ShopItemViewModel
+@using mvc_project.Models
 @{
     ViewBag.Title = "Shop";
+
+
+
+    Uri uri = new Uri(Request.Url.ToString());
+    string url_img = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
 }
 
 
@@ -30,238 +36,41 @@
             <div class="title-area pull-left">
                 <p>Showing 1–9 of 23 results</p>
             </div>
+        </div>
+
+
+<div class="row module-wrapper shop-layout text-center">
+
+@{ foreach (ShopItem obj in Model.items)
+        {
+
+            <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
+                <div class="img-wrap">
+                    <figure>
+                        <img alt="" src="@url_img@obj.photo_url" class="img-responsive">
+                        <figcaption>
+                            <p><strong>$ @obj.price</strong></p>
+                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
+                        </figcaption>
+                    </figure>
+                </div>
+                <h4><a href="#" title="">@obj.Name</a></h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+            </div>
+
+        }
+    }
+
 
         </div>
-        <div class="row module-wrapper shop-layout text-center">
-            <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
-                <div class="img-wrap">
-                    <figure>
-                        <img alt="" src="~/Content/shop/xshop_01.jpg" class="img-responsive">
-                        <figcaption>
-                            <p><strong>$43.00</strong></p>
-                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <h4><a href="shop-single.html" title="">Beautiful Cat Bed</a></h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
-                <div class="img-wrap">
-                    <figure>
-                        <img alt="" src="~/Content/shop/xshop_02.jpg" class="img-responsive">
-                        <figcaption>
-                            <p><strong>$12.00</strong></p>
-                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <h4><a href="shop-single.html" title="">Prof Cat House</a></h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
-                <div class="img-wrap">
-                    <figure>
-                        <img alt="" src="~/Content/shop/xshop_03.jpg" class="img-responsive">
-                        <figcaption>
-                            <p><strong>$55.00</strong></p>
-                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <h4><a href="shop-single.html" title="">Gorgeous dog house</a></h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
-                <div class="img-wrap">
-                    <figure>
-                        <img alt="" src="~/Content/shop/xshop_04.jpg" class="img-responsive">
-                        <figcaption>
-                            <p><strong>$124.00</strong></p>
-                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <h4><a href="shop-single.html" title="">Dog food bowl</a></h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
-                <div class="img-wrap">
-                    <figure>
-                        <img alt="" src="~/Content/shop/xshop_05.jpg" class="img-responsive">
-                        <figcaption>
-                            <p><strong>$43.00</strong></p>
-                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <h4><a href="shop-single.html" title="">Beautiful Cat Bed</a></h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
-                <div class="img-wrap">
-                    <figure>
-                        <img alt="" src="~/Content/shop/xshop_06.jpg" class="img-responsive">
-                        <figcaption>
-                            <p><strong>$12.00</strong></p>
-                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <h4><a href="shop-single.html" title="">Prof Cat House</a></h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
-                <div class="img-wrap">
-                    <figure>
-                        <img alt="" src="~/Content/shop/xshop_07.jpg" class="img-responsive">
-                        <figcaption>
-                            <p><strong>$55.00</strong></p>
-                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <h4><a href="shop-single.html" title="">Gorgeous dog house</a></h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
-                <div class="img-wrap">
-                    <figure>
-                        <img alt="" src="~/Content/shop/xshop_08.jpg" class="img-responsive">
-                        <figcaption>
-                            <p><strong>$124.00</strong></p>
-                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <h4><a href="shop-single.html" title="">Dog food bowl</a></h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
-                <div class="img-wrap">
-                    <figure>
-                        <img alt="" src="~/Content/shop/xshop_09.jpg" class="img-responsive">
-                        <figcaption>
-                            <p><strong>$43.00</strong></p>
-                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <h4><a href="shop-single.html" title="">Beautiful Cat Bed</a></h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
-                <div class="img-wrap">
-                    <figure>
-                        <img alt="" src="~/Content/shop/xshop_10.jpg" class="img-responsive">
-                        <figcaption>
-                            <p><strong>$12.00</strong></p>
-                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <h4><a href="shop-single.html" title="">Prof Cat House</a></h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
-                <div class="img-wrap">
-                    <figure>
-                        <img alt="" src="~/Content/shop/xshop_11.jpg" class="img-responsive">
-                        <figcaption>
-                            <p><strong>$55.00</strong></p>
-                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <h4><a href="shop-single.html" title="">Gorgeous dog house</a></h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
-                <div class="img-wrap">
-                    <figure>
-                        <img alt="" src="~/Content/shop/xshop_12.jpg" class="img-responsive">
-                        <figcaption>
-                            <p><strong>$124.00</strong></p>
-                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <h4><a href="shop-single.html" title="">Dog food bowl</a></h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-            </div>
-        </div>
+
+
         <hr class="invis">
         <nav class="pagi clearfix text-center">
             <ul class="pagination">

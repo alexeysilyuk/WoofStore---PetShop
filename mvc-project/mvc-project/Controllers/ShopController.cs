@@ -13,7 +13,10 @@ namespace mvc_project.Controllers
         // GET: Shop
         public ActionResult Index()
         {
-            return View("Shop");
+            ShopItemDAL dal = new ShopItemDAL();
+            
+            List<ShopItem> list_of_items = dal.ShopItems.ToList<ShopItem>();
+            return View("Shop", new ShopItemViewModel(new ShopItem(), list_of_items));
         }
 
 
