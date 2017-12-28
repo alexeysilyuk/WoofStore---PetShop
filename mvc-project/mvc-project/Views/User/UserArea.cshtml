@@ -1,0 +1,31 @@
+﻿@model mvc_project.Models.User
+    @using mvc_project.Models
+
+@{
+    ViewBag.Title = "UserArea";
+}
+
+<div class="col-md-12">
+    <div class="plan wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s;">
+        <div class="head">
+            <h2><strong>@Model.username profile page</strong></h2>
+        </div>
+        <ul class="list-group">
+            <li><strong>Name      :</strong> @Model.fname</li>
+            <li><strong>Last Name :</strong> @Model.lname</li>
+            <li><strong>Email     :</strong> @Model.email</li>
+            <li><strong>Phone     :</strong> @Model.phone</li>
+            <li><strong>Photo     :</strong> <a href="@Model.photo">Open it</a></li>
+ 
+        </ul>
+        <div class="price"><br>
+            <h2>Balance</h2>
+            <h3><span class="symbol">$</span>@Model.money</h3>
+            
+        </div>
+        <button type="button" class="btn btn-primary">Fill Balance</button>
+    </div>
+</div>
+
+
+

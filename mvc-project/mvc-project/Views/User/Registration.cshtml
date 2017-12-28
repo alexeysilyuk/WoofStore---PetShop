@@ -1,0 +1,108 @@
+﻿@model mvc_project.Models.User
+@using mvc_project.Models
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+<fieldset class="row-fluid appoform">
+    <form action="Register" method="post">
+
+        <div class="col-md-12 col-xs-12">
+
+            <div class="col-md-6">
+
+                <div class="col-md-6">
+                    <strong>Username:</strong>
+                    @Html.TextBoxFor(m => m.username, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.username)</div>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>Password:</strong>
+                    @Html.TextBoxFor(m => m.password, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.password)</div>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>First name:</strong>
+                    @Html.TextBoxFor(m => m.fname, new { @class = "form-control" })   <div style="color:red">  @Html.ValidationMessageFor(x => x.fname)</div>
+                </div>
+
+            <div class="col-md-6">
+                <strong>Last name:</strong>
+                @Html.TextBoxFor(m => m.lname, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.lname)</div>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Photo</strong>
+                @Html.TextBoxFor(m => m.photo, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.photo)</div>
+            </div>
+
+            <div class="col-md-6">
+                <!--<strong>is Admin</strong>-->
+               @Html.HiddenFor(m => m.isAdmin)
+            </div>
+
+            <div class="col-md-6">
+                <strong>Email</strong>
+                @Html.TextBoxFor(m => m.email, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.email)</div>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Phone</strong>
+                @Html.TextBoxFor(m => m.phone, new { @class = "form-control" })  <div style="color:red"> @Html.ValidationMessageFor(x => x.phone)</div>
+            </div>
+
+
+                <button type="submit" id="submit" class="btn btn-primary btn-block">Add Customer</button>
+
+            </div>
+            </div>
+            <br />
+
+
+</form>
+    </fieldset>
+
+    @*<table class="table table-condensed">
+        <tr>
+            <td>ID</td>
+            <td>FirstName</td>
+            <td>LastName</td>
+            <td>Money</td>
+            <td>Photo</td>
+            <td>isAdmin</td>
+           @{if (isAdmin)
+               { 
+                   <td>Email</td>
+                   <td>Phone</td>
+               } 
+           }
+
+        </tr>
+
+        @{ foreach (User obj in Model.users)
+            {
+                <tr>
+                    <td>@obj.ID</td>
+                    <td>@obj.fname</td>
+                    <td>@obj.lname</td>
+                    <td>@obj.money</td>
+                    <td>
+                    <a href="@obj.photo"><img src="@obj.photo" width="75" height="75"></a></td>
+                    <td>@obj.isAdmin</td>
+                    @{if (isAdmin)
+                        {
+                            <td>@obj.email</td>
+                            <td>@obj.phone</td>
+                        }
+                    }
+                    
+            </tr>
+            }
+        }
+
+    </table>*@

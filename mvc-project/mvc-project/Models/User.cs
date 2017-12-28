@@ -9,10 +9,6 @@ namespace mvc_project.Models
     public class User
     {
 
-        [Key]
-        [Required]
-        public int ID { get; set; }
-
         [Required]
         [StringLength(100, MinimumLength = 2)]
         public string fname { get; set; }
@@ -33,6 +29,16 @@ namespace mvc_project.Models
         [Required]
         [EmailAddress]
         public string email { get; set; }
+
+        [Key]
+        [Required]
+        public string username { get; set; }
+
+        [Required]
+        [RegularExpression("^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$", ErrorMessage = "Password must contain at least 1 digit, 1 letter and 1 special symbol!")]
+        public string password { get; set; }
+
+        public string ecryptedPassword { get; set; }
 
         [Required]
         [Phone]
