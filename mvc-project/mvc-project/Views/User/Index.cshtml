@@ -2,6 +2,7 @@
 @using mvc_project.Models
 @{
     ViewBag.Title = "Index";
+    bool isAdmin = false;
 }
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
@@ -84,10 +85,18 @@
                     <td>@obj.fname</td>
                     <td>@obj.lname</td>
                     <td>@obj.money</td>
-                    <td>@obj.photo</td>
+                    <td>
+                    <a href="@obj.photo"><img src="@obj.photo" width="75" height="75"></a></td>
                     <td>@obj.isAdmin</td>
-                    <td>@obj.email</td>
-                    <td>@obj.phone</td>
+                    @{if (isAdmin)
+                        {
+                            <td>@obj.email</td>
+                            <td>@obj.phone</td>
+                        }
+                        <td>HIDDEN</td>
+                        <td>HIDDEN</td>
+                    }
+                    
             </tr>
             }
         }

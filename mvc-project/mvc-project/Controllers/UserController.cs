@@ -25,7 +25,7 @@ namespace mvc_project.Controllers
         {
             User obj = new Models.User();
             obj.fname = Request.Form["user.fname"];
-            obj.lname = Request.Form["user.fname"];
+            obj.lname = Request.Form["user.lname"];
             obj.ID = Int32.Parse(Request.Form["user.ID"]);
             obj.money = Int32.Parse(Request.Form["user.money"]);
             obj.photo = Request.Form["user.photo"];
