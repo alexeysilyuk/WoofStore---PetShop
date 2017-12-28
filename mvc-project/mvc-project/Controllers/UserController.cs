@@ -19,6 +19,10 @@ namespace mvc_project.Controllers
             return View(new UserViewModel(new User(), list_of_users));
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
 
 
         public ActionResult UserSubmit()
