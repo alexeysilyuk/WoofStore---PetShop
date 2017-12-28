@@ -14,15 +14,15 @@ namespace mvc_project.Models
         public int ID { get; set; }
 
         [Required]
-        [StringLength(100, MinimumLength = 5)]
+        [StringLength(100, MinimumLength = 2)]
         public string fname { get; set; }
 
         [Required]
-        [StringLength(100, MinimumLength = 5)]
+        [StringLength(100, MinimumLength = 2)]
         public string lname { get; set; }
 
         [Required]
-        [RegularExpression("^([0-9]+)$", ErrorMessage = "Price has to be number")]
+        [RegularExpression("^([0-9]+)$", ErrorMessage = "Money amount must to be a number")]
         public int money { get; set; }
 
         [Required]
