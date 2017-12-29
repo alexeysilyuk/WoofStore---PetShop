@@ -20,6 +20,18 @@ namespace mvc_project.Controllers
             return View(new UserViewModel(new User(), list_of_users));
         }
 
+
+        public ActionResult LogOut()
+        {
+            Session["login"] = null;
+            Session["admin"] = false;
+
+            Session["money"] = 0;
+            Session["avatar"] = null;
+
+            return View("Login");
+        }
+
         public ActionResult Login()
         {
             return View("Login");
@@ -57,7 +69,13 @@ namespace mvc_project.Controllers
                 return View("Login", user);
             }
 
-            return View("UserArea", user);
+            Session["login"] = user.fname;
+            Session["admin"] = user.isAdmin;
+            Session["money"] = user.money;
+            Session["avatar"] = user.photo;
+
+            return View("~/Views/Home/Index.cshtml");
+            //return View("UserArea", user);
         }
 
         public ActionResult Registration()
