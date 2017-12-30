@@ -24,12 +24,11 @@ namespace mvc_project.Controllers
             OrderDAL odal = new OrderDAL();
             List<Order> list_of_orders = odal.Orders.ToList<Order>();
 
-            // if (Convert.ToBoolean(Session["admin"]))
-
+             if (Convert.ToBoolean(Session["admin"]))
             return View("Index", new AdminViewModel(list_of_users, list_of_items, list_of_orders));
 
 
-            //else return View("~/Views/Home/Index.cshtml");
+            else return View("~/Views/Home/Index.cshtml");
 
         }
 
@@ -37,55 +36,58 @@ namespace mvc_project.Controllers
         public ActionResult EditUser(String  username, String fname, String lname, String phone, String email, String balance, String password
             )
         {
-
-            UserDAL udal = new UserDAL();
-            List<User> list_of_users = udal.Users.ToList<User>();
-            User obj = list_of_users.Find(x => x.username == username);
-
-
-
-            if (ModelState.IsValid)
+            if (Convert.ToBoolean(Session["admin"]))
             {
-                try
+                UserDAL udal = new UserDAL();
+                List<User> list_of_users = udal.Users.ToList<User>();
+                User obj = list_of_users.Find(x => x.username == username);
+
+
+
+                if (ModelState.IsValid)
                 {
-
-                    if (obj != null)
+                    try
                     {
-                        udal.Users.Remove(obj);
-                        udal.SaveChanges();
 
-                        obj.fname = fname;
-                        obj.lname = lname;
-                        obj.phone = phone;
-                        obj.email = email;
-                        obj.money = Int32.Parse(balance);
-                        obj.password = password;
-
-                        udal.Users.Add(obj);
-                        udal.SaveChanges();
-                    }
-
-                }
-
-
-                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
-                {
-                    Exception raise = dbEx;
-                    foreach (var validationErrors in dbEx.EntityValidationErrors)
-                    {
-                        foreach (var validationError in validationErrors.ValidationErrors)
+                        if (obj != null)
                         {
-                            string message = string.Format("{0}:{1}",
-                                validationErrors.Entry.Entity.ToString(),
-                                validationError.ErrorMessage);
+                            udal.Users.Remove(obj);
+                            udal.SaveChanges();
 
-                            raise = new InvalidOperationException(message, raise);
+                            obj.fname = fname;
+                            obj.lname = lname;
+                            obj.phone = phone;
+                            obj.email = email;
+                            obj.money = Int32.Parse(balance);
+                            obj.password = password;
+
+                            udal.Users.Add(obj);
+                            udal.SaveChanges();
                         }
-                    }
-                    throw raise;
-                }
-            }
 
+                    }
+
+
+                    catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                    {
+                        Exception raise = dbEx;
+                        foreach (var validationErrors in dbEx.EntityValidationErrors)
+                        {
+                            foreach (var validationError in validationErrors.ValidationErrors)
+                            {
+                                string message = string.Format("{0}:{1}",
+                                    validationErrors.Entry.Entity.ToString(),
+                                    validationError.ErrorMessage);
+
+                                raise = new InvalidOperationException(message, raise);
+                            }
+                        }
+                        throw raise;
+                    }
+                }
+
+                
+            }
             return null;
         }
 
@@ -94,16 +96,19 @@ namespace mvc_project.Controllers
         [HttpPost]
         public ActionResult DeleteUser(String username)
         {
-
-            UserDAL udal = new UserDAL();
-            List<User> list_of_users = udal.Users.ToList<User>();
-            var obj = list_of_users.Find(x => x.username == username);
-
-
-            if (obj != null)
+            if (Convert.ToBoolean(Session["admin"]))
             {
-                udal.Users.Remove(obj);
-                udal.SaveChanges();
+
+                UserDAL udal = new UserDAL();
+                List<User> list_of_users = udal.Users.ToList<User>();
+                var obj = list_of_users.Find(x => x.username == username);
+
+
+                if (obj != null)
+                {
+                    udal.Users.Remove(obj);
+                    udal.SaveChanges();
+                }
             }
             return null;
         }
@@ -113,16 +118,18 @@ namespace mvc_project.Controllers
         [HttpPost]
         public ActionResult DeleteItem(String id)
         {
-
-            ShopItemDAL idal = new ShopItemDAL();
-            List<ShopItem> list_of_items = idal.ShopItems.ToList<ShopItem>();
-            var obj = list_of_items.Find(x => x.Id == Int32.Parse(id));
-
-
-            if (obj != null)
+            if (Convert.ToBoolean(Session["admin"]))
             {
-                idal.ShopItems.Remove(obj);
-                idal.SaveChanges();
+                    ShopItemDAL idal = new ShopItemDAL();
+                List<ShopItem> list_of_items = idal.ShopItems.ToList<ShopItem>();
+                var obj = list_of_items.Find(x => x.Id == Int32.Parse(id));
+
+
+                if (obj != null)
+                {
+                    idal.ShopItems.Remove(obj);
+                    idal.SaveChanges();
+                }
             }
             return null;
         }
@@ -134,54 +141,56 @@ namespace mvc_project.Controllers
         [HttpPost]
         public ActionResult EditItem(String iId, String iName, String iDescription, String iPrice, String iPhoto_url)
         {
-
-            // edit
-            if (iId != null && iId != "")
+            if (Convert.ToBoolean(Session["admin"]))
             {
-                ShopItemDAL idal = new ShopItemDAL();
-                List<ShopItem> list_of_items = idal.ShopItems.ToList<ShopItem>();
-                ShopItem obj = list_of_items.Find(x => x.Id == Int32.Parse(iId));
 
-
-
-                if (ModelState.IsValid)
+                // edit
+                if (iId != null && iId != "")
                 {
-                    if (obj != null)
+                    ShopItemDAL idal = new ShopItemDAL();
+                    List<ShopItem> list_of_items = idal.ShopItems.ToList<ShopItem>();
+                    ShopItem obj = list_of_items.Find(x => x.Id == Int32.Parse(iId));
+
+
+
+                    if (ModelState.IsValid)
                     {
-                        idal.ShopItems.Remove(obj);
-                        idal.SaveChanges();
+                        if (obj != null)
+                        {
+                            idal.ShopItems.Remove(obj);
+                            idal.SaveChanges();
 
-                        obj.Name = iName;
-                        obj.Description = iDescription;
-                        obj.price = Int32.Parse(iPrice);
-                        obj.photo_url = iPhoto_url;
+                            obj.Name = iName;
+                            obj.Description = iDescription;
+                            obj.price = Int32.Parse(iPrice);
+                            obj.photo_url = iPhoto_url;
 
 
-                        idal.ShopItems.Add(obj);
+                            idal.ShopItems.Add(obj);
+                            idal.SaveChanges();
+                        }
+                    }
+
+                }
+
+                // add new 
+                else
+                {
+                    ShopItemDAL idal = new ShopItemDAL();
+                    List<ShopItem> list_of_items = idal.ShopItems.ToList<ShopItem>();
+                    ShopItem i = new ShopItem();
+                    i.Name = iName;
+                    i.Description = iDescription;
+                    i.price = Int32.Parse(iPrice);
+                    i.photo_url = iPhoto_url;
+
+                    if (ModelState.IsValid)
+                    {
+                        idal.ShopItems.Add(i);
                         idal.SaveChanges();
                     }
                 }
-
             }
-
-            // add new 
-            else
-            {
-                ShopItemDAL idal = new ShopItemDAL();
-                List<ShopItem> list_of_items = idal.ShopItems.ToList<ShopItem>();
-                ShopItem i = new ShopItem();
-                i.Name = iName;
-                i.Description = iDescription;
-                i.price = Int32.Parse(iPrice);
-                i.photo_url = iPhoto_url;
-
-                if (ModelState.IsValid)
-                {
-                    idal.ShopItems.Add(i);
-                    idal.SaveChanges();
-                }
-            }
-
             return null;
         }
 
