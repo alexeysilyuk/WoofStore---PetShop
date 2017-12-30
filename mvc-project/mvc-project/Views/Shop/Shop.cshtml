@@ -55,18 +55,15 @@
                         <img alt="" src="@obj.photo_url" class="img-responsive">
                         <figcaption>
                             <p><strong>$ @obj.price</strong></p>
-                            <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
+                            <a class="blogging" title="Add to Cart" href="#"><i class="fa fa-shopping-cart"></i></a>
                         </figcaption>
                     </figure>
                 </div>
-                <h4><a href="#" title="">@obj.Name</a></h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
+                <h4>
+
+ @Html.ActionLink(obj.Name, "SingleItem", "Shop",  new { itemId = obj.Id }, null)
+
+                </h4>
             </div>
 
         }

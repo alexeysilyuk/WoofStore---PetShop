@@ -212,10 +212,10 @@
     <Content Include="Views\Shop\Cart.cshtml" />
     <Content Include="Views\Shop\SingleItem.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\Shop\addItem.cshtml" />
     <Content Include="Views\User\Registration.cshtml" />
     <Content Include="Views\User\UserArea.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\Not_Found.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
