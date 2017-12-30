@@ -774,6 +774,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     max-width: 100%;
     display: block;
     position: relative;
+    height:170px;
 }
 
 .img-responsive, .carousel-inner > .item > img, .carousel-inner > .item > a > img, .thumbnail > img, .thumbnail a > img {

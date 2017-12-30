@@ -105,10 +105,87 @@ namespace mvc_project.Controllers
                 udal.Users.Remove(obj);
                 udal.SaveChanges();
             }
+            return null;
+        }
 
+
+
+        [HttpPost]
+        public ActionResult DeleteItem(String id)
+        {
+
+            ShopItemDAL idal = new ShopItemDAL();
+            List<ShopItem> list_of_items = idal.ShopItems.ToList<ShopItem>();
+            var obj = list_of_items.Find(x => x.Id == Int32.Parse(id));
+
+
+            if (obj != null)
+            {
+                idal.ShopItems.Remove(obj);
+                idal.SaveChanges();
+            }
+            return null;
+        }
+
+
+
+
+
+        [HttpPost]
+        public ActionResult EditItem(String iId, String iName, String iDescription, String iPrice, String iPhoto_url)
+        {
+
+            // edit
+            if (iId != null && iId != "")
+            {
+                ShopItemDAL idal = new ShopItemDAL();
+                List<ShopItem> list_of_items = idal.ShopItems.ToList<ShopItem>();
+                ShopItem obj = list_of_items.Find(x => x.Id == Int32.Parse(iId));
+
+
+
+                if (ModelState.IsValid)
+                {
+                    if (obj != null)
+                    {
+                        idal.ShopItems.Remove(obj);
+                        idal.SaveChanges();
+
+                        obj.Name = iName;
+                        obj.Description = iDescription;
+                        obj.price = Int32.Parse(iPrice);
+                        obj.photo_url = iPhoto_url;
+
+
+                        idal.ShopItems.Add(obj);
+                        idal.SaveChanges();
+                    }
+                }
+
+            }
+
+            // add new 
+            else
+            {
+                ShopItemDAL idal = new ShopItemDAL();
+                List<ShopItem> list_of_items = idal.ShopItems.ToList<ShopItem>();
+                ShopItem i = new ShopItem();
+                i.Name = iName;
+                i.Description = iDescription;
+                i.price = Int32.Parse(iPrice);
+                i.photo_url = iPhoto_url;
+
+                if (ModelState.IsValid)
+                {
+                    idal.ShopItems.Add(i);
+                    idal.SaveChanges();
+                }
+            }
 
             return null;
         }
+
+
 
     }   
 }

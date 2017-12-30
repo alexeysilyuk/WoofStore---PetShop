@@ -1,8 +1,15 @@
 ﻿$(function () {
+
+    $(".cls").click(function () {
+        $(".shadow, .modal").fadeOut();
+    });
+
+
+    // USER ASYNC BLOCK
     var phone, email, lname, fname, balance, pass, username, photo_url;
 
 
-    $(".del_btn").click(function () {
+    $(".user_del_btn").click(function () {
         var idUser = $(this).attr("id");
         var r = confirm("Are you really want to delete user: " + idUser);
         if (r == true) {
@@ -14,7 +21,7 @@
         }
     });
 
-    $(".edit_btn").click(function () {
+    $(".user_edit_btn").click(function () {
         $(".shadow, .userModal").fadeIn();
 
          phone = $(this).parent().prev().prev();
@@ -39,12 +46,10 @@
     });
 
 
-    $(".cls").click(function () {
-        $(".shadow, .userModal").fadeOut();
-    });
 
 
-    $(".save_changes").click(function () {
+
+    $(".user_save_changes").click(function () {
         $.post("/Admin/EditUser",
             {
                 username: $("#username").val(),
@@ -57,7 +62,7 @@
                
             });
 
-        $("#res_query").text("Successfuly changed");
+        $("#user_res_query").text("Successfuly changed");
 
         fname.text($("#fname").val());
         lname.text($("#lname").val());
@@ -68,8 +73,84 @@
 
 
 
-        setTimeout(function () { $(".shadow, .userModal").fadeOut(); }, 2000);
+        setTimeout(function () {
+            $(".shadow, .userModal").fadeOut();
+            $("#user_res_query").text("");
+        }, 2000);
     });
+
+
+
+
+    //////////////////////////////////////////////////////////////////////////////////
+
+    // ITEMS ASYNC BLOCK
+    var iName, iId, iDescription, iPrice, iPhoto_url;
+
+
+    $(".item_del_btn").click(function () {
+        var idItem = $(this).attr("id");
+        var r = confirm("Are you really want to delete item: " + idItem);
+        if (r == true) {
+            $.post("/Admin/DeleteItem", { id: idItem });
+            $(this).parent().parent().fadeOut();
+
+        } else {
+            console.log("Cancel!");
+        }
+    });
+
+
+    $(".item_edit_btn").click(function () {
+        $(".shadow, .itemModal").fadeIn();
+
+        iPhoto_url = $(this).parent().prev().children();
+
+        iPrice = $(this).parent().prev().prev();
+        iDescription = $(this).parent().prev().prev().prev();
+        iName = $(this).parent().prev().prev().prev().prev();
+        iId = $(this).parent().prev().prev().prev().prev().prev();
+       
+
+
+        $("#iPhoto_url").val(iPhoto_url.attr("href"));
+        $("#iPrice").val(iPrice.text());
+        $("#iDescription").val(iDescription.text());
+        $("#iName").val(iName.text());
+        $("#iId").val(iId.text());
+
+       
+
+    });
+
+
+    $(".item_save_changes").click(function () {
+        $.post("/Admin/EditItem",
+            {
+                iId: $("#iId").val(),
+                iName: $("#iName").val(),
+                iDescription: $("#iDescription").val(),
+                iPrice: $("#iPrice").val(),
+                iPhoto_url: $("#iPhoto_url").val()
+            });
+
+        $("#item_res_query").text("Successfuly changed");
+
+
+        iPhoto_url.attr("href", $("#iPhoto_url").val());
+        iPhoto_url.children().attr("src", $("#iPhoto_url").val());
+        iName.text($("#iName").val());
+        iDescription.text($("#iDescription").val());
+        iPrice.text($("#iPrice").val());
+
+       
+        setTimeout(function () {
+            $(".shadow, .itemModal").fadeOut();
+            $("#item_res_query").text("");
+        }, 2000);
+    });
+
+
 
 
 });

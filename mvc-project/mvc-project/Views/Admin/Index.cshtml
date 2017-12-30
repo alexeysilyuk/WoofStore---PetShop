@@ -7,11 +7,13 @@
 
 }
 
+
+<!-- USER EDIT MODAL WINDOW-->
 <div class="userModal modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">User Edit</h5>
+                <h5 class="modal-title">Control User</h5>
             </div>
             <div class="modal-body">
                 
@@ -61,10 +63,10 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="save_changes btn btn-primary">Save changes</button>
+                <button type="button" class="user_save_changes btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-secondary cls">Close</button>
 
-                <div class="alert-success" id="res_query"></div>
+                <div class="alert-success" id="user_res_query"></div>
 
             </div>
         </div>
@@ -72,43 +74,186 @@
 </div>
 
 
-<div class="general-title text-center">
-    <h4>User List</h4>
-    <hr>
+
+<!-- USER EDIT MODAL WINDOW-->
+<div class="itemModal modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Shop Item</h5>
+            </div>
+            <div class="modal-body">
+
+                <fieldset class="row-fluid appoform">
+
+                    <div class="col-md-12">
+                        <input type="hidden" name="iId" id="iId" class="form-control">
+                    </div>
+
+                    <label>Name</label>
+                    <div class="col-md-12">
+                        <input type="text" name="iName" id="iName" class="form-control">
+                    </div>
+
+                    <label>Description</label>
+                    <div class="col-md-12">
+                        <textarea class="form-control"  name="iDescription" id="iDescription"></textarea>
+                    </div>
+
+                    <label>Price</label>
+                    <div class="col-md-12">
+                        <input type="text" name="iPrice" id="iPrice" class="form-control">
+                    </div>
+
+                    <label>Photo Url</label>
+                    <div class="col-md-12">
+                        <textarea class="form-control" name="iPhoto_url" id="iPhoto_url"></textarea>
+                    </div>
+
+                 
+                </fieldset>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="item_save_changes btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary cls">Close</button>
+
+                <div class="alert-success" id="item_res_query"></div>
+
+            </div>
+        </div>
+    </div>
 </div>
 
-<table id="cart-table" class="table table-condensed">
-    <thead>
-        <tr>
-            <th>UserName</th>
-            <th>Password</th>
-            <th>Balance ($)</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Photo</th>
 
-            <th>Actions</th>
-        </tr>
-    </thead>
 
-    <tbody>
-        @{  foreach (User obj in regular_users)
+
+<div class="tabbed-widget">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#users">Users</a></li>
+        <li><a data-toggle="tab" href="#items">Shop Items</a></li>
+        <li><a data-toggle="tab" href="#orders">Orders</a></li>
+    </ul>
+
+
+    <div class="tab-content">
+
+        <!-- USERS LIST-->
+        <div id="users" class="tab-pane fade in active">
+            
+            <br />
+            <div class="general-title text-center">
+                <h4>User List</h4>
+                <hr>
+            </div>
+
+            <table id="cart-table" class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>UserName</th>
+                        <th>Password</th>
+                        <th>Balance ($)</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Photo</th>
+
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @{  foreach (User obj in regular_users)
             {
-                <tr>
-                    <th>@obj.username</th>
-                    <th>@obj.password</th>
-                    <th>@obj.money</th>
-                    <th>@obj.fname</th>
-                    <th>@obj.lname</th>
-                    <th>@obj.email</th>
-                    <th>@obj.phone</th>
-                    <th><a href="@obj.photo" target="_blank">Open in new window</a></th>
-                    <th><button class="btn btn-primary btn-block edit_btn">Edit</button>
-                        <button id="@obj.username" class="btn btn-primary btn-block del_btn">Delete</button></th>
-                </tr>
-            }
-        }
-    </tbody>
-    </table>
+                            <tr>
+                                <th>@obj.username</th>
+                                <th>@obj.password</th>
+                                <th>@obj.money</th>
+                                <th>@obj.fname</th>
+                                <th>@obj.lname</th>
+                                <th>@obj.email</th>
+                                <th>@obj.phone</th>
+                                <th><a href="@obj.photo" target="_blank">Open in new window</a></th>
+                                <th>
+                                    <button class="btn btn-primary user_edit_btn">Edit</button>
+                                    <button id="@obj.username" class="btn btn-danger user_del_btn">X</button>
+                                </th>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+        <!-- SHOP ITEMS-->
+        <div id="items" class="tab-pane fade">
+        
+            <br />
+            <div class="general-title text-center">
+                <h4>Shop Items List</h4>
+                <hr>
+            </div>
+
+
+            <div class="pull-right col-md-3">
+                <button class="btn btn-success btn-block item_edit_btn">Add New</button>
+                <br />
+                <br />
+            </div>
+            
+
+            <table id="cart-table" class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price ($)</th>
+                        <th>Photo_url</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @{  foreach (ShopItem obj in Model.items)
+            {
+                            <tr>
+                                <th>@obj.Id</th>
+                                <th>@obj.Name</th>
+                                <th>@obj.Description</th>
+                                <th>@obj.price</th>
+                                <th><a href="@obj.photo_url" target="_blank"><img src="@obj.photo_url" height="50" width="50" /></a></th>
+                                <th>
+                                    <button class="btn btn-primary item_edit_btn">Edit</button>
+                                    <button id="@obj.Id" class="btn btn-danger item_del_btn">X</button>
+                                </th>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <!-- ORDERS LIST-->
+        <div id="orders" class="tab-pane fade">
+
+            <br />
+            <div class="general-title text-center">
+                <h4>Orders List</h4>
+                <hr>
+            </div>
+ 
+        </div>
+
+    </div>
+</div>
+
+
+
