@@ -63,6 +63,9 @@
             <div class="modal-footer">
                 <button type="button" class="save_changes btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-secondary cls">Close</button>
+
+                <div class="alert-success" id="res_query"></div>
+
             </div>
         </div>
     </div>
@@ -103,7 +106,7 @@
                     <th>@obj.phone</th>
                     <th><a href="@obj.photo" target="_blank">Open in new window</a></th>
                     <th><button class="btn btn-primary btn-block edit_btn">Edit</button>
-                        <button class="btn btn-primary btn-block del_btn">Delete</button></th>
+                        <button id="@obj.username" class="btn btn-primary btn-block del_btn">Delete</button></th>
                 </tr>
             }
         }

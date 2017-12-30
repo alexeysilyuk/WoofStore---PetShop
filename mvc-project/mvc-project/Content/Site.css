@@ -1111,3 +1111,11 @@ a {
     z-index: 1030;
     background: #000;
 }
+
+.alert-success {
+    text-align:center;
+    line-height: 40px;
+    vertical-align: middle;
+    margin-top:10px;
+    font-weight:bold;
+}
