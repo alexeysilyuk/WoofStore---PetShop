@@ -13,10 +13,13 @@ namespace mvc_project.Models
         public int ID { get; set; }
 
         [Required]
-        public int uID { get; set; }
+        public String username { get; set; }
 
         [Required]
         public int[] items { get; set; }
+
+        [Required]
+        public int totalSum { get; set; }
 
         [Required]
         public int status { get; set; }

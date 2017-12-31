@@ -152,5 +152,19 @@
 
 
 
+    // Cart
+    $(".cart_add").click(function () {
+        var cPrice, cId, cImg, cTitle;
+        cId = $(this).attr("id");
+        cTitle = $(this).attr("title");
+        cPrice = $(this).prev().text();
+        cImg = $(this).parent().prev().attr("src");
+
+
+        alert("Add to cart: \n" + cId + "\n" + cPrice + "\n" + cImg + "\n" + cTitle);
+
+        return false;
+    });
+
 
 });
