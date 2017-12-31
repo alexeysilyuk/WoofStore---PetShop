@@ -20,7 +20,8 @@
                 <small>$ @Model.price</small>
                
                 <p>@Model.Description</p>
-                <a href="#" class="btn btn-primary">Add to Cart</a>
+                <div style="display:none" id="img_url_l">@Model.photo_url</div>
+                <a href="#" id="@Model.Id" title="@Model.Name" class="buy btn btn-primary">Buy @Model.Name</a>
                
   
             </div>

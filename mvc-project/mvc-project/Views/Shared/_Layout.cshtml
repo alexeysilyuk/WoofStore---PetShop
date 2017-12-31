@@ -35,7 +35,7 @@
                         <div class="col-md-9 text-left">
                             <p>
                              Welcome:<strong> @Session["login"]</strong>
-                             <br />Balance: <strong> @Session["money"] $</strong>
+                             <br />Balance: <strong id="ubalance"> @Session["money"] $</strong>
 </p>
                         </div>
                     </div>
@@ -48,8 +48,8 @@
     }
 }
 
-                        @Html.ActionLink("Profile", "UserArea", "User")
-                        @Html.ActionLink("Orders", "UserOrders", "User")
+                        @Html.ActionLink("My Profile", "UserArea", "User")
+                        @Html.ActionLink("My Orders", "UserOrders", "Shop")
                         @Html.ActionLink("Exit", "LogOut", "User")
                        
                     </div>

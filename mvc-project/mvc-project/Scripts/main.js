@@ -151,20 +151,66 @@
     });
 
 
+    // ORDERS ASYNC BLOCK
+    var oStatus, oId;
 
-    // Cart
+
+    $(".order_del_btn").click(function () {
+        var idItem = $(this).attr("title");
+        var r = confirm("Are you really want to delete item: " + idItem);
+        if (r == true) {
+            $.post("/Admin/DeleteOrder", { id: idItem });
+            $(this).parent().parent().fadeOut();
+
+        } else {
+            console.log("Cancel!");
+        }
+    });
+
+
+
+    // Bye items create orders
+
+    function updateSession() {
+        
+    }
+
     $(".cart_add").click(function () {
-        var cPrice, cId, cImg, cTitle;
-        cId = $(this).attr("id");
-        cTitle = $(this).attr("title");
-        cPrice = $(this).prev().text();
-        cImg = $(this).parent().prev().attr("src");
+        var itemPrice, itemId, itemTitle, itemPhoto;
+        itemId = $(this).attr("id");
+        itemPrice = $(this).prev().text();
+        itemTitle = $(this).attr("title");
+        itemPhoto = $(this).parent().prev().attr("src");
+       
 
-
-        alert("Add to cart: \n" + cId + "\n" + cPrice + "\n" + cImg + "\n" + cTitle);
+        $.post("/Shop/makeOrder", { itemId: itemId, itemPrice: itemPrice, itemTitle: itemTitle, itemPhoto: itemPhoto },
+            function (data) {
+                alert("Added to your list of orders\n");
+                $("#ubalance").text(data+" $");
+            }
+            );
 
         return false;
     });
 
+
+
+    $(".buy").click(function () {
+        var itemPrice, itemId, itemTitle, itemPhoto;
+        itemId = $(this).attr("id");
+        itemTitle = $(this).attr("title");
+        itemPrice = $(this).prev().prev().prev().text();
+        itemPhoto = $(this).prev().text();
+
+
+        $.post("/Shop/makeOrder", { itemId: itemId, itemPrice: itemPrice, itemTitle: itemTitle, itemPhoto: itemPhoto },
+            function (data) {
+                alert("Added to your list of orders\n");
+                $("#ubalance").text(data + " $");
+            }
+            );
+
+        return false;
+    });
 
 });

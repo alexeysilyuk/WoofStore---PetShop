@@ -2,9 +2,6 @@
 @using mvc_project.Models
 @{
     ViewBag.Title = "Index";
-
-    var regular_users = from u in Model.users where u.isAdmin == false select u;
-
 }
 
 
@@ -75,7 +72,7 @@
 
 
 
-<!-- USER EDIT MODAL WINDOW-->
+<!-- ITEM EDIT MODAL WINDOW-->
 <div class="itemModal modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -129,6 +126,7 @@
 
 
 
+
 <div class="tabbed-widget">
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#users">Users</a></li>
@@ -165,7 +163,7 @@
                 </thead>
 
                 <tbody>
-                    @{  foreach (User obj in regular_users)
+                    @{  foreach (User obj in Model.users)
             {
                             <tr>
                                 <th>@obj.username</th>
@@ -249,6 +247,55 @@
                 <h4>Orders List</h4>
                 <hr>
             </div>
+
+
+            <table id="cart-table" class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Item Title</th>
+                        <th>Photo</th>
+                        <th>Price</th>
+                        <th>User Name</th>
+                        <th>Status</th> 
+                        <th>Action Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+
+                    @foreach (Order o in Model.orders)
+                    {
+                    <tr>
+
+                        <th>@o.orderID</th>
+                        <th>@Html.ActionLink(o.title, "SingleItem", "Shop", new { itemId = o.itemID }, null)</th>
+                        <th>
+                            <div class="media">
+                                <div class="relative">
+                                    <a href="@o.img" title="">
+                                        <img src="@o.img" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </th>
+                        <td>@o.price</td>
+                        <td>@o.username</td>
+                        <th>@o.status</th>
+
+                        <th>
+                            <button title="@o.orderID"class="btn btn-info order_sent_btn">Sent</button>
+                            <button title="@o.orderID" class="btn btn-primary order_cancel_btn">Cancel</button>
+                            <button title="@o.orderID" class="btn btn-success order_deliver_btn">Delivered</button>
+                            <button title="@o.orderID" class="btn btn-danger order_del_btn">X</button>
+                        </th>
+
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
  
         </div>
 

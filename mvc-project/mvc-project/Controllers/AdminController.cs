@@ -96,11 +96,14 @@ namespace mvc_project.Controllers
         [HttpPost]
         public ActionResult DeleteUser(String username)
         {
+            UserDAL udal = new UserDAL();
+            List<User> list_of_users = udal.Users.ToList<User>();
+
             if (Convert.ToBoolean(Session["admin"]))
             {
 
-                UserDAL udal = new UserDAL();
-                List<User> list_of_users = udal.Users.ToList<User>();
+                udal = new UserDAL();
+                list_of_users = udal.Users.ToList<User>();
                 var obj = list_of_users.Find(x => x.username == username);
 
 
@@ -108,9 +111,11 @@ namespace mvc_project.Controllers
                 {
                     udal.Users.Remove(obj);
                     udal.SaveChanges();
+                    list_of_users = udal.Users.ToList<User>();
                 }
             }
-            return null;
+
+            return Json(list_of_users, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -195,6 +200,25 @@ namespace mvc_project.Controllers
         }
 
 
+
+        [HttpPost]
+        public ActionResult DeleteOrder(String id)
+        {
+            if (Convert.ToBoolean(Session["admin"]))
+            {
+                OrderDAL idal = new OrderDAL();
+                List<Order> list_of_items = idal.Orders.ToList<Order>();
+                var obj = list_of_items.Find(x => x.orderID == Int32.Parse(id));
+
+
+                if (obj != null)
+                {
+                    idal.Orders.Remove(obj);
+                    idal.SaveChanges();
+                }
+            }
+            return null;
+        }
 
     }   
 }

@@ -31,9 +31,83 @@ namespace mvc_project.Controllers
                 return View("Not_Found");
         }
 
-        public ActionResult Cart()
+
+        public void updateUserBalance()
         {
-            return View();
+            UserDAL dal = new UserDAL();
+            User user = new User();
+
+            string searchCriteria = Session["login"].ToString();
+            List<User> resultList = (from x in dal.Users
+                                     where x.username.Contains(searchCriteria)
+                                     select x).ToList<User>();
+
+
+            if (resultList.Count == 1)
+            {
+                user = resultList.ElementAt(0);
+
+                dal.Users.Remove(user);
+                dal.SaveChanges();
+
+                user.money = Int32.Parse(Session["money"].ToString());
+                dal.Users.Add(user);
+                dal.SaveChanges();
+
+            }
+        }
+
+        public ActionResult makeOrder(String itemId, String itemPrice, String itemTitle, String itemPhoto)
+        {
+            int item_Id = Int32.Parse(itemId);
+            int item_Price = Int32.Parse(itemPrice.Substring(2, itemPrice.Length - 2));
+            int sdacha = 0;
+
+            if (Session["login"] != null && !(Session["login"].Equals("")) ) {
+
+                OrderDAL ord = new OrderDAL();
+                sdacha = Int32.Parse(Session["money"].ToString()) - item_Price;
+                if (sdacha >= 0)
+                {
+                    
+
+                    Order obj = new Order();
+                    obj.username = Session["login"].ToString();
+                    obj.status = "New";
+                    obj.price = item_Price;
+                    obj.itemID = item_Id;
+                    obj.img = itemPhoto;
+                    obj.title = itemTitle;
+
+                    ord.Orders.Add(obj);
+                    ord.SaveChanges();
+
+                    Session["money"] = sdacha;
+                    updateUserBalance();
+
+                }
+                
+              }
+
+            return Json(sdacha, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult UserOrders()
+        {
+            if (Session["login"] != null && !(Session["login"].Equals("")))
+            {
+                String query = Session["login"].ToString();
+                OrderDAL dal = new OrderDAL();
+                List<Order> resultList = (from x in dal.Orders
+                                          where x.username == query
+                                          select x).ToList<Order>();
+
+                return View("Cart", new OrderVM(resultList));
+            }
+            else
+            {
+                return View("Cart");
+            }
         }
 
 
