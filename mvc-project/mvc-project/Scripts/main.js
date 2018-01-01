@@ -168,6 +168,29 @@
     });
 
 
+    $(".order_deliver_btn").click(function () {
+        oStatus = $(this).parent().prev();
+        var idItem = $(this).attr("title");
+        
+        $.post("/Admin/setStatusOrder", { id: idItem, status: "Delivered" }, function (data) { oStatus.text(data); });
+        
+    });
+
+    $(".order_cancel_btn").click(function () {
+        oStatus = $(this).parent().prev();
+        var idItem = $(this).attr("title");
+
+        $.post("/Admin/setStatusOrder", { id: idItem, status: "Cancel" }, function (data) { oStatus.text(data); });
+    });
+
+    $(".order_sent_btn").click(function () {
+        oStatus = $(this).parent().prev();
+        var idItem = $(this).attr("title");
+
+        $.post("/Admin/setStatusOrder", { id: idItem, status: "Sended" }, function (data) { oStatus.text(data); });
+    });
+
+
 
     // Bye items create orders
 

@@ -220,5 +220,32 @@ namespace mvc_project.Controllers
             return null;
         }
 
+
+
+        [HttpPost]
+        public ActionResult setStatusOrder(String id, String status)
+        {
+            if (Convert.ToBoolean(Session["admin"]))
+            {
+                OrderDAL idal = new OrderDAL();
+                List<Order> list_of_items = idal.Orders.ToList<Order>();
+                var obj = list_of_items.Find(x => x.orderID == Int32.Parse(id));
+
+
+                if (obj != null)
+                {
+                    idal.Orders.Remove(obj);
+                    idal.SaveChanges();
+
+                    obj.status = status;
+                    idal.Orders.Add(obj);
+                    idal.SaveChanges();
+
+                    return Json(status, JsonRequestBehavior.AllowGet);
+                }
+            }
+            return null;
+        }
+
     }   
 }
