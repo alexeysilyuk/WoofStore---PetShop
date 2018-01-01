@@ -1,21 +1,30 @@
 ﻿@model mvc_project.Models.User
-    @using mvc_project.Models
+@using mvc_project.Models
+
+
 
 @{
+    List<User> q = new List<User>();
+    q.Add(Model);
+    WebGrid o = new WebGrid(q);
     ViewBag.Title = "UserArea";
 }
 
 <div class="col-md-12">
     <div class="plan wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s;">
         <div class="head">
-            <h2><strong>@Model.username profile page</strong></h2>
+            <h2><strong>@Model.fname profile page</strong></h2>
         </div>
-        <ul class="list-group">
-            <li><strong>Name      :</strong> @Model.fname</li>
-            <li><strong>Last Name :</strong> @Model.lname</li>
-            <li><strong>Email     :</strong> @Model.email</li>
-            <li><strong>Phone     :</strong> @Model.phone</li>
-            <li><strong>Photo     :</strong> <a href="@Model.photo">Open it</a></li>
+
+
+        @*@o.GetHtml();*@
+
+        <ul class="leftSide">
+    <li><strong>Name      :</strong> @Model.fname</li>
+    <li><strong>Last Name :</strong> @Model.lname</li>
+    <li><strong>Email     :</strong> @Model.email</li>
+    <li><strong>Phone     :</strong> @Model.phone</li>
+    <li><strong>Photo     :</strong> <a href="@Model.photo">Open it</a></li>
  
         </ul>
         <div class="price"><br>

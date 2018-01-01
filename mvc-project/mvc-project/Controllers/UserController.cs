@@ -69,7 +69,7 @@ namespace mvc_project.Controllers
                 return View("Login", user);
             }
 
-            Session["login"] = user.fname;
+            Session["login"] = user.username;
             Session["admin"] = user.isAdmin;
             Session["money"] = user.money;
             Session["avatar"] = user.photo;
@@ -127,6 +127,22 @@ namespace mvc_project.Controllers
             else
                 return View("Login");
 
+        }
+
+        public ActionResult UserArea()
+        {
+            if (Session["login"] != null && !(Session["login"].Equals("")))
+            {
+                String q = Session["login"].ToString();
+
+                UserDAL udal = new UserDAL();
+                List<User> list_of_users = udal.Users.ToList<User>();
+                User obj = list_of_users.Find(x => x.username == Session["login"].ToString());
+
+                return View("UserArea", obj);
+            }
+            else
+                return View("Not_Found");
         }
 
     }
