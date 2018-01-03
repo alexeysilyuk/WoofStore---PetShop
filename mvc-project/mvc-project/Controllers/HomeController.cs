@@ -1,5 +1,8 @@
-﻿using System;
+﻿using mvc_project.DAL;
+using mvc_project.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -33,5 +36,30 @@ namespace mvc_project.Controllers
 
             return View("myInfo");
         }
+
+
+        public ActionResult contactUs(String name, String email, String comments)
+        {
+            MessageDAL dal = new MessageDAL();
+            Message obj = new Message();
+            obj.name = name;
+            obj.email = email;
+            obj.comments = comments;
+
+            try
+            {
+                dal.Messages.Add(obj);
+                dal.SaveChanges();
+
+                return Json("OK", JsonRequestBehavior.AllowGet);
+            }
+            catch (DbEntityValidationException e)
+            {
+                return Json("Error", JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
+
     }
 }

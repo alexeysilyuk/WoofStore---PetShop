@@ -119,9 +119,6 @@ namespace mvc_project.Controllers
                 {
                 }
 
-                // List<User> list_of_users = dal.Users.ToList<User>();
-                //UserViewModel vm = new UserViewModel(new User(), list_of_users);
-
                 return View("Login");
             }
             else
@@ -144,6 +141,95 @@ namespace mvc_project.Controllers
             else
                 return View("Not_Found");
         }
+
+
+
+
+
+        public ActionResult updateProfile(String username, String fname, String lname, String email, String phone)
+        {
+            UserDAL dal = new UserDAL();
+            List<User> list_of_users = dal.Users.ToList<User>();
+            User obj = list_of_users.Find(x => x.username == username);
+
+            if (obj == null)
+            {
+                return Json("Error User not exist", JsonRequestBehavior.AllowGet);
+            }
+
+            else
+            {
+                dal.Users.Remove(obj);
+                dal.SaveChanges();
+
+                obj.fname = fname;
+                obj.lname = lname;
+                obj.email = email;
+                obj.phone = phone;
+
+                dal.Users.Add(obj);
+                dal.SaveChanges();
+
+                return Json("OK", JsonRequestBehavior.AllowGet);
+
+            }
+        }
+
+
+        public ActionResult updatePassword(String username, String password, String cpassword)
+        {
+            UserDAL dal = new UserDAL();
+            List<User> list_of_users = dal.Users.ToList<User>();
+            User obj = list_of_users.Find(x => x.username == username);
+
+            if (obj == null)
+            {
+                return Json("Error User not exist", JsonRequestBehavior.AllowGet);
+            }
+
+            else
+            {
+                dal.Users.Remove(obj);
+                dal.SaveChanges();
+
+                obj.password = password;
+
+                dal.Users.Add(obj);
+                dal.SaveChanges();
+
+                return Json("OK", JsonRequestBehavior.AllowGet);
+
+            }
+        }
+
+
+        public ActionResult updatePhoto(String username, String photo_url)
+        {
+            UserDAL dal = new UserDAL();
+            List<User> list_of_users = dal.Users.ToList<User>();
+            User obj = list_of_users.Find(x => x.username == username);
+
+            if (obj == null)
+            {
+                return Json("Error", JsonRequestBehavior.AllowGet);
+            }
+
+            else
+            {
+                dal.Users.Remove(obj);
+                dal.SaveChanges();
+
+                obj.photo = photo_url;
+
+                dal.Users.Add(obj);
+                dal.SaveChanges();
+
+                Session["avatar"] = obj.photo;
+                return Json(photo_url, JsonRequestBehavior.AllowGet);
+
+            }
+        }
+
 
     }
 }

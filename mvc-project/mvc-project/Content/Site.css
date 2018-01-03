@@ -1121,3 +1121,5 @@ a {
     font-weight:bold;
 }
 .leftSide { text-align: left !important; }
+
+.alert { position : fixed; top:120px; display:none; z-index: 900;}

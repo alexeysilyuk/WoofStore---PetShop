@@ -24,8 +24,11 @@ namespace mvc_project.Controllers
             OrderDAL odal = new OrderDAL();
             List<Order> list_of_orders = odal.Orders.ToList<Order>();
 
-             if (Convert.ToBoolean(Session["admin"]))
-            return View("Index", new AdminViewModel(list_of_users, list_of_items, list_of_orders));
+            MessageDAL mdal = new MessageDAL();
+            List<Message> list_of_message = mdal.Messages.ToList<Message>();
+
+            if (Convert.ToBoolean(Session["admin"]))
+            return View("Index", new AdminViewModel(list_of_users, list_of_items, list_of_orders, list_of_message));
 
 
             else return View("~/Views/Home/Index.cshtml");
@@ -193,6 +196,8 @@ namespace mvc_project.Controllers
                     {
                         idal.ShopItems.Add(i);
                         idal.SaveChanges();
+
+                        return Json(i, JsonRequestBehavior.AllowGet);
                     }
                 }
             }
@@ -241,8 +246,22 @@ namespace mvc_project.Controllers
                     idal.Orders.Add(obj);
                     idal.SaveChanges();
 
-                    return Json(status, JsonRequestBehavior.AllowGet);
+                    return Json(obj, JsonRequestBehavior.AllowGet);
                 }
+            }
+            return null;
+        }
+
+
+        public ActionResult DeleteMessages(String order)
+        {
+            if (Convert.ToBoolean(Session["admin"]))
+            {
+                MessageDAL db = new MessageDAL();
+                List<Message> l = db.Messages.ToList<Message>();
+                var all = from c in l select c;
+                db.Messages.RemoveRange(all);
+                db.SaveChanges();
             }
             return null;
         }
