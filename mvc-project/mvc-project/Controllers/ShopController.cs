@@ -13,10 +13,7 @@ namespace mvc_project.Controllers
         // GET: Shop
         public ActionResult Index()
         {
-            ShopItemDAL dal = new ShopItemDAL();
-            
-            List<ShopItem> list_of_items = dal.ShopItems.ToList<ShopItem>();
-            return View("Shop", new ShopItemViewModel(new ShopItem(), list_of_items));
+            return View("Shop");
         }
 
         public ActionResult SingleItem(int itemId)
@@ -84,7 +81,6 @@ namespace mvc_project.Controllers
 
                     Session["money"] = sdacha;
                     updateUserBalance();
-
                 }
                 else
                 {

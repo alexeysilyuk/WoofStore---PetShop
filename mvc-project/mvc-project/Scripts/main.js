@@ -237,12 +237,13 @@
         itemId = $(this).attr("id");
         itemPrice = $(this).prev().text();
         itemTitle = $(this).attr("title");
-        itemPhoto = $(this).parent().prev().attr("src");
-       
+        itemPhoto = $(this).parent().prev().children().attr("src");
+
 
         $.post("/Shop/makeOrder", { itemId: itemId, itemPrice: itemPrice, itemTitle: itemTitle, itemPhoto: itemPhoto },
             function (data) {
-                if (data !== "Error") {
+                console.log(data);
+                if (data!== "Error") {
                     alert("Added to your list of orders\n");
                     $("#ubalance").text(data + " $");
                 }
@@ -400,8 +401,7 @@
         dynSearhcStr = $(this).val();
         dynSearhcStr = dynSearhcStr.toLocaleLowerCase();
         if (dynSearhcStr.length != 0) {
-            
-
+           
             $("#dynamicLoad h4").each(function () {
                 
                 if (!($(this).text().trim().toLocaleLowerCase().match("^" + dynSearhcStr))) {
@@ -410,7 +410,6 @@
                 else {
                     $(this).parent().fadeIn();
                 }
-
             });
         }
 
