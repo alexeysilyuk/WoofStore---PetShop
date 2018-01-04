@@ -23,10 +23,8 @@
         <div class="search pull-right">
             <form>
                 <div class="input-group">
-                    <input class="form-control" name="s" type="search" placeholder=" Search... ">
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-primary">GO</button>
-                    </span>
+                    <input class="form-control" name="s" id="dynSearch" type="search" placeholder=" Search... ">
+                    
                 </div>
             </form>
         </div>
@@ -44,9 +42,11 @@
         </div>
 --> 
 
-<div class="row module-wrapper shop-layout text-center">
+<div class="status_load" id="status_load_dyn"></div>
 
-@{ foreach (ShopItem obj in linq_test)
+<div id="dynamicLoad" class="row module-wrapper shop-layout text-center">
+
+@*@{ foreach (ShopItem obj in linq_test)
         {
 
             <div class="col-md-3 col-sm-6 wdtShop grid cs-style-3">
@@ -67,7 +67,45 @@
             </div>
 
         }
-    }
+    }*@
+
+    
+    <script>
+
+        $.get("/Shop/getShopItemsbyJSON", null, showList);
+
+        function showList(shopItems) {
+            
+
+            var block = $("#dynamicLoad");
+
+            $("#status_load_dyn").fadeIn().text("Loading shop items, please wait...");
+            for (i = 0; i < shopItems.length; i++) {
+                
+
+                var newElement = " <div class='col-md-3 col-sm-6 wdtShop grid cs-style-3'>" +
+                "<div class='img-wrap'>" +
+                    "<figure>" +
+                        "<img src='" + shopItems[i].photo_url + "' class='img-responsive'>" +
+                        "<figcaption>" +
+                            "<p><strong>$ " + shopItems[i].price + "</strong></p>" +
+                            "<a class='blogging cart_add' title='" + shopItems[i].Name + "' id='" + shopItems[i].Id + "' href='#'>" +
+                            "<i class='fa fa-shopping-cart'></i></a>" +
+                        "</figcaption>" +
+                    "</figure>" +
+                "</div>" +
+                "<h4>" +
+                "<a href='/Shop/SingleItem?itemId=" + shopItems[i].Id + "'> " + shopItems[i].Name + " </a> " +
+                "</h4>";
+
+               
+                block.append(newElement);
+                
+            }
+            $("#status_load_dyn").text("").fadeOut();
+        }
+
+    </script>
 
 
         </div>

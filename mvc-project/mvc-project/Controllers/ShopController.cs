@@ -86,6 +86,10 @@ namespace mvc_project.Controllers
                     updateUserBalance();
 
                 }
+                else
+                {
+                    return Json("Error", JsonRequestBehavior.AllowGet);
+                }
                 
               }
 
@@ -110,7 +114,13 @@ namespace mvc_project.Controllers
             }
         }
 
+        public ActionResult getShopItemsbyJSON()
+        {
+            ShopItemDAL dal = new ShopItemDAL();
+            List<ShopItem> list_of_items = dal.ShopItems.ToList<ShopItem>();
 
+            return Json(list_of_items, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

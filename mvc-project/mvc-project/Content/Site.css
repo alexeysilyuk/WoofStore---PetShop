@@ -1123,3 +1123,7 @@ a {
 .leftSide { text-align: left !important; }
 
 .alert { position : fixed; top:120px; display:none; z-index: 900;}
+
+#photo_profile_dyn { border-radius: 150px;}
+
+.status_load { color: #ff0033; text-align: center; display: none; }

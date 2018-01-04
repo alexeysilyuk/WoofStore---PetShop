@@ -63,6 +63,7 @@ namespace mvc_project.Controllers
                             obj.email = email;
                             obj.money = Int32.Parse(balance);
                             obj.password = password;
+                            obj.ecryptedPassword = HashPass.GenerateHash(password);
 
                             udal.Users.Add(obj);
                             udal.SaveChanges();

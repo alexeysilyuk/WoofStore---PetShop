@@ -53,7 +53,7 @@ namespace mvc_project.Controllers
 
                 return Json("OK", JsonRequestBehavior.AllowGet);
             }
-            catch (DbEntityValidationException e)
+            catch (DbEntityValidationException )
             {
                 return Json("Error", JsonRequestBehavior.AllowGet);
             }

@@ -232,7 +232,7 @@
 
     // Bye items create orders
 
-    $(".cart_add").click(function () {
+    $("#dynamicLoad").on("click", ".cart_add", function () {
         var itemPrice, itemId, itemTitle, itemPhoto;
         itemId = $(this).attr("id");
         itemPrice = $(this).prev().text();
@@ -242,8 +242,13 @@
 
         $.post("/Shop/makeOrder", { itemId: itemId, itemPrice: itemPrice, itemTitle: itemTitle, itemPhoto: itemPhoto },
             function (data) {
-                alert("Added to your list of orders\n");
-                $("#ubalance").text(data+" $");
+                if (data !== "Error") {
+                    alert("Added to your list of orders\n");
+                    $("#ubalance").text(data + " $");
+                }
+                else {
+                    callBackProfile("Error");
+                }
             }
             );
 
@@ -358,7 +363,8 @@
     // contact us 
     $("#contactform").submit(function () {
 
-        var data = $(this).serialize()
+        var data = $(this).serialize();
+        $(this).each(function () { this.reset(); });
         console.log(data);
 
         $.post("/Home/contactUs", data,
@@ -366,9 +372,7 @@
                 callBackProfile(res);
             });
 
-        return false;
-
-        return false;
+        return false; 
     });
 
 
@@ -387,6 +391,35 @@
             }
         }
          
+    });
+
+
+    // search 
+    var dynSearhcStr;
+    $("#dynSearch").keyup(function () {
+        dynSearhcStr = $(this).val();
+        dynSearhcStr = dynSearhcStr.toLocaleLowerCase();
+        if (dynSearhcStr.length != 0) {
+            
+
+            $("#dynamicLoad h4").each(function () {
+                
+                if (!($(this).text().trim().toLocaleLowerCase().match("^" + dynSearhcStr))) {
+                    $(this).parent().fadeOut();
+                }
+                else {
+                    $(this).parent().fadeIn();
+                }
+
+            });
+        }
+
+        else {
+            $("#dynamicLoad h4").each(function () {
+                    $(this).parent().fadeIn();
+            });
+        }
+
     });
 
 });

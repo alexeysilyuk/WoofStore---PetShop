@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
+using System.Security.Cryptography;
 using System.Web.Mvc;
 
 namespace mvc_project.Controllers
@@ -61,8 +61,8 @@ namespace mvc_project.Controllers
                 user = resultList.ElementAt(0);
             }
 
-            string receivedPassword = Request.Form["password"];
-            string userPassword = user.password;
+            string receivedPassword = HashPass.GenerateHash(Request.Form["password"]);
+            string userPassword = user.ecryptedPassword;
             if (!receivedPassword.Equals(userPassword))
             {
                 ViewBag.Error = "Incorrect password! Try Again";
@@ -82,6 +82,7 @@ namespace mvc_project.Controllers
         {
             return View("Registration");
         }
+
         public ActionResult Register()
         {
             UserDAL dal = new UserDAL();
@@ -97,6 +98,7 @@ namespace mvc_project.Controllers
             obj.photo = Request.Form["photo"];
             obj.email = Request.Form["email"];
             obj.phone = Request.Form["phone"];
+            obj.ecryptedPassword = HashPass.GenerateHash(Request.Form["password"]);
             obj.isAdmin = false;
 
             List<User> resultList = (from x in dal.Users
@@ -104,7 +106,7 @@ namespace mvc_project.Controllers
                                      select x).ToList<User>();
             if (resultList.Count != 0)
             {
-                ViewBag.Error = "USer with this username already exists!";
+                ViewBag.Error = "User with this username already exists!";
                 return View("Login");
             }
 
@@ -115,7 +117,7 @@ namespace mvc_project.Controllers
                     dal.Users.Add(obj);
                     dal.SaveChanges();
                 }
-                catch (DbEntityValidationException e)
+                catch (DbEntityValidationException)
                 {
                 }
 
@@ -193,6 +195,7 @@ namespace mvc_project.Controllers
                 dal.SaveChanges();
 
                 obj.password = password;
+                obj.ecryptedPassword = HashPass.GenerateHash(password);
 
                 dal.Users.Add(obj);
                 dal.SaveChanges();
