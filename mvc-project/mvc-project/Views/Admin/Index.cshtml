@@ -1,12 +1,12 @@
 ﻿@model mvc_project.Models.AdminViewModel
 @using mvc_project.Models
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Admin page";
 
     WebGrid grid = new WebGrid(Model.messages);
 }
 
-
+<div class="osahanloading"></div>
 <!-- USER EDIT MODAL WINDOW-->
 <div class="userModal modal">
     <div class="modal-dialog" role="document">

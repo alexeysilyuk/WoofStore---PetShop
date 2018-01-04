@@ -4,7 +4,7 @@
         $(".shadow, .modal").fadeOut();
     });
 
-
+    $(".osahanloading").hide();
     // USER ASYNC BLOCK
     var phone, email, lname, fname, balance, pass, username, photo_url;
 
@@ -177,6 +177,7 @@
 
 
     $(".order_deliver_btn").click(function () {
+        $(".osahanloading").fadeIn();
         oStatus = $(this).parent().prev();
         oId = $(this);
         var idItem = $(this).attr("title");
@@ -191,10 +192,12 @@
                 oId.prev().prev().attr("title", data["orderID"]);
             }
         );
+        $(".osahanloading").fadeOut();
         
     });
 
     $(".order_cancel_btn").click(function () {
+        $(".osahanloading").fadeIn();
         oStatus = $(this).parent().prev();
         oId = $(this);
         var idItem = $(this).attr("title");
@@ -209,9 +212,11 @@
                             oId.next().next().attr("title", data["orderID"]);
                         }
             );
+        $(".osahanloading").fadeOut();
     });
 
     $(".order_sent_btn").click(function () {
+        $(".osahanloading").fadeIn();
         oStatus = $(this).parent().prev();
         oId = $(this);
         var idItem = $(this).attr("title");
@@ -226,6 +231,7 @@
                             oId.next().next().next().attr("title", data["orderID"]);
                         }
             );
+        $(".osahanloading").fadeOut();
     });
 
 
@@ -303,6 +309,7 @@
 
 
     $("#updateProfile").submit(function () {
+        $(".osahanloading").fadeIn();
         var data = $(this).serialize()
         console.log(data);
 
@@ -310,12 +317,13 @@
             function (res) {
                 callBackProfile(res);
             });
-
+        $(".osahanloading").fadeOut();
         return false;
     });
 
 
     $("#updatePassword").submit(function () {
+        $(".osahanloading").fadeIn();
         var data = $(this).serialize()
         console.log(data);
 
@@ -331,12 +339,13 @@
         else {
             callBackProfile("Error");
         }
-
+        $(".osahanloading").fadeOut();
         return false;
     });
 
     
     $("#updatePhoto").submit(function () {
+        $(".osahanloading").fadeIn();
         var img = $(this).find("#photo_profile_dyn");
         var data = $(this).serialize()
         console.log(data);
@@ -356,7 +365,7 @@
                     $("body").find("#photo_top_avatar").fadeOut().delay(1000).attr("src", res).fadeIn();
                 }
             });
-
+        $(".osahanloading").fadeOut();
         return false;
     });
 

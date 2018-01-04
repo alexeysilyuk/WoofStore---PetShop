@@ -9,7 +9,7 @@
     WebGrid o = new WebGrid(q);
     ViewBag.Title = "UserArea";
 }
-
+<div class="osahanloading"></div>
 <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="plan wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s;">
         <div class="head">
@@ -17,8 +17,6 @@
         </div>
 
         <input type="hidden" value="@Model.username" id="username_profile_dyn">
-
-        @*@o.GetHtml();*@
 
         <br />
         <fieldset class="row-fluid appoform leftSide col-md-12">
@@ -84,9 +82,6 @@
             <h2><strong>Change Password</strong></h2>
         </div>
 
-
-        @*@o.GetHtml();*@
-
         <br />
         <fieldset class="row-fluid appoform leftSide col-md-12">
             <form id="updatePassword" action="updatePassword" method="post">
@@ -118,7 +113,7 @@
             <h2><strong>Change Photo</strong></h2>
         </div>
 
-        @*@o.GetHtml();*@
+ 
 
         <br />
         <fieldset class="row-fluid appoform leftSide col-md-12"> 
@@ -141,7 +136,7 @@
                 <center>
                     <input type="submit" class="btn btn-primary" value="Set Photo" />
                 </center>
-                </fom>
+                </form>
 </fieldset>
 
 

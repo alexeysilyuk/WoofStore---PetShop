@@ -1148,6 +1148,7 @@ a {
     position: absolute;
     top: 50%;
     width: 50px;
+    z-index:100;
 }
 .osahanloading::after {
     animation: 1.5s linear 0s normal none infinite running osahanloading_after;
