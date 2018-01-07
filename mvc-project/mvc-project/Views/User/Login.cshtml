@@ -3,11 +3,14 @@
 }
 <h2>Login</h2>
 
+<div id="preloader" style="display:none"></div>
+
+
 
 <section class="section grey">
     <div class="container">
         <div class="general-title text-center">
-            <form class="form-horizontal" action="Authorization" method="post">
+            <form id="login_form" class="form-horizontal" action="Authorization" method="post">
                 <fieldset>
 
                     <div class="form-group">
@@ -33,3 +36,8 @@
         </div>
     </div>
 </section>
+
+
+<script>
+    $("#login_form").submit(function () { $("#preloader").fadeIn(); });
+</script>
