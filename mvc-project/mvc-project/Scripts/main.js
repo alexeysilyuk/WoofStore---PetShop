@@ -101,8 +101,8 @@
         iId = $(this).parent().prev().prev().prev().prev().prev();
 
 
-
-        $("#iPhoto_url").val(iPhoto_url.attr("href"));
+        var photo_name = iPhoto_url.attr("href").split('/');
+        $("#iPhoto_url").val(photo_name[3]);
         $("#iPrice").val(iPrice.text());
         $("#iDescription").val(iDescription.text());
         $("#iName").val(iName.text());
@@ -135,7 +135,7 @@
                 if ( !($.isEmptyObject(d))) {
                     console.log(d);
                     var tbl = $("#shopItemDynamic");
-                    var tr = "<tr><th>" + d["Id"] + "</th><th>" + d["Name"] + "</th><th>" + d["Description"] + "</th><th>" + d["price"] + "</th><th><a href='" + d["photo_url"] + "' target='_blank'><img src='" + d["photo_url"] + "' height='50' width='50' /></a></th><th><button class='btn btn-primary item_edit_btn'>Edit</button><button id='" + d["Id"] + "' class='btn btn-danger item_del_btn'>X</button></th></tr>";
+                    var tr = "<tr><th>" + d["Id"] + "</th><th>" + d["Name"] + "</th><th>" + d["Description"] + "</th><th>" + d["price"] + "</th><th><a href='" + d["photo_url"] + "' target='_blank'><img src='/Content/shop/" + d["photo_url"] + "' height='50' width='50' /></a></th><th><button class='btn btn-primary item_edit_btn'>Edit</button><button id='" + d["Id"] + "' class='btn btn-danger item_del_btn'>X</button></th></tr>";
 
                     tbl.prepend(tr);
                 }
@@ -146,7 +146,7 @@
 
 
         iPhoto_url.attr("href", $("#iPhoto_url").val());
-        iPhoto_url.children().attr("src", $("#iPhoto_url").val());
+        iPhoto_url.children().attr("src","/Content/shop/"+ $("#iPhoto_url").val());
         iName.text($("#iName").val());
         iDescription.text($("#iDescription").val());
         iPrice.text($("#iPrice").val());
@@ -249,12 +249,13 @@
         $.post("/Shop/makeOrder", { itemId: itemId, itemPrice: itemPrice, itemTitle: itemTitle, itemPhoto: itemPhoto },
             function (data) {
                 console.log(data);
-                if (data!== "Error") {
+                if (data!== 0) {
                     alert("Added to your list of orders\n");
                     $("#ubalance").text(data + " $");
                 }
                 else {
                     callBackProfile("Error");
+                    alert("You must login to make order\n");
                 }
             }
             );
@@ -274,8 +275,15 @@
 
         $.post("/Shop/makeOrder", { itemId: itemId, itemPrice: itemPrice, itemTitle: itemTitle, itemPhoto: itemPhoto },
             function (data) {
-                alert("Added to your list of orders\n");
-                $("#ubalance").text(data + " $");
+                console.log(data);
+                if (data !== 0) {
+                    alert("Added to your list of orders\n");
+                    $("#ubalance").text(data + " $");
+                }
+                else {
+                    callBackProfile("Error");
+                    alert("You must login to make order\n");
+                }
             }
             );
 

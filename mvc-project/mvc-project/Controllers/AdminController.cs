@@ -166,16 +166,12 @@ namespace mvc_project.Controllers
                     {
                         if (obj != null)
                         {
-                            idal.ShopItems.Remove(obj);
-                            idal.SaveChanges();
-
+ 
                             obj.Name = iName;
                             obj.Description = iDescription;
                             obj.price = Int32.Parse(iPrice);
                             obj.photo_url = iPhoto_url;
 
-
-                            idal.ShopItems.Add(obj);
                             idal.SaveChanges();
                         }
                     }
