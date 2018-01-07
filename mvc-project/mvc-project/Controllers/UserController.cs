@@ -62,8 +62,8 @@ namespace mvc_project.Controllers
             }
 
             string receivedPassword = HashPass.GenerateHash(Request.Form["password"]);
-            string userPassword = user.ecryptedPassword;
-            if (!receivedPassword.Equals(userPassword))
+            string dbHashPassowrd = user.ecryptedPassword;
+            if ((HashPass.ValidatePassword(receivedPassword, dbHashPassowrd)))
             {
                 ViewBag.Error = "Incorrect password! Try Again";
                 return View("Login", user);
@@ -92,7 +92,7 @@ namespace mvc_project.Controllers
             obj.fname = Request.Form["fname"];
             obj.username = Request.Form["username"];
             string password = Request.Form["password"];
-            obj.password = password;
+            obj.password = "myHappyPassword120!";
             obj.lname = Request.Form["lname"];
             obj.money = 1000;
             obj.photo = Request.Form["photo"];
