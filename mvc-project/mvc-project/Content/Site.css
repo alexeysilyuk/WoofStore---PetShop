@@ -1137,7 +1137,7 @@ a {
     width: 100%;
     z-index: 10000;
 }
-.osahanloading {
+.osahanloading, #preloader {
     animation: 1.5s linear 0s normal none infinite running osahanloading;
     background: #fed37f none repeat scroll 0 0;
     border-radius: 50px;
@@ -1150,7 +1150,7 @@ a {
     width: 50px;
     z-index:100;
 }
-.osahanloading::after {
+.osahanloading::after, #preloader::after {
     animation: 1.5s linear 0s normal none infinite running osahanloading_after;
     border-color: #85d6de transparent;
     border-radius: 80px;
@@ -1164,6 +1164,19 @@ a {
     width: 80px;
 }
 @keyframes osahanloading {
+0% {
+    transform: rotate(0deg);
+}
+50% {
+    background: #85d6de none repeat scroll 0 0;
+    transform: rotate(180deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
+
+@keyframes preloader {
 0% {
     transform: rotate(0deg);
 }

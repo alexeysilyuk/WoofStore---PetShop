@@ -43,7 +43,7 @@
 --> 
 
         <div id="status_load_dyn"></div>
-            <div class="osahanloading"></div>
+            <div id="preloader"></div>
        
 
             
@@ -76,6 +76,7 @@
 
     <script>
         $("#status_load_dyn").fadeIn().text("Loading shop items, please wait...");
+        $("#preloader").fadeIn();
         $.get("/Shop/getShopItemsbyJSON", null, showList);
 
         function showList(shopItems) {
@@ -91,7 +92,7 @@
                 "<div class='img-wrap'>" +
                     "<figure>" +
                        "<a href='/Shop/SingleItem?itemId=" + shopItems[i].Id + "'> " +
-                       "<img src='" + shopItems[i].photo_url + "' class='img-responsive'>" +"</a>"+
+                       "<img src='/Content/shop/" + shopItems[i].photo_url + "' class='img-responsive'>" +"</a>"+
                         "<figcaption>" +
                             "<p><strong>$ " + shopItems[i].price + "</strong></p>" +
                             "<a class='blogging cart_add' title='" + shopItems[i].Name + "' id='" + shopItems[i].Id + "' href='#'>" +
@@ -108,7 +109,7 @@
 
             }
             $("#status_load_dyn").text("").fadeOut();
-            $(".osahanloading").fadeOut();
+            $("#preloader").fadeOut();
         }
 
     </script>
