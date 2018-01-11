@@ -7,12 +7,12 @@ namespace mvc_project.Models
 {
     public class AdminViewModel
     {
-        public AdminViewModel(List<User> u, List<ShopItem> i, List<Order> o, List<Message> m)
+        public AdminViewModel(List<User> users, List<ShopItem> items, List<Order> orders, List<Message> messages)
         {
-            this.users = u;
-            this.items = i;
-            this.orders = o;
-            this.messages = m;
+            this.users = users;
+            this.items = items;
+            this.orders = orders;
+            this.messages = messages;
         }
 
         public List<User> users { get; set; }

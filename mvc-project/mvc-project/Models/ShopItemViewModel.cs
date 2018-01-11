@@ -8,9 +8,9 @@ namespace mvc_project.Models
     public class ShopItemViewModel
     {
 
-        public ShopItemViewModel(ShopItem i, List<ShopItem> items)
+        public ShopItemViewModel(ShopItem item, List<ShopItem> items)
         {
-            this.i = i;
+            this.i = item;
             this.items = items;
         }
 

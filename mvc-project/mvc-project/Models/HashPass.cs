@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Security.Cryptography;
 
+
+// This class been copied from your video tutorial 
+// https://www.youtube.com/watch?v=1_iGzrT74k0&index=20&list=PLwBA6rowVFgFrsCUDpuL0QlkXDhGnF9Rp
+// therefore no comments here
 namespace mvc_project.Models
 {
     public class HashPass
@@ -20,11 +24,6 @@ namespace mvc_project.Models
             csprng.GetBytes(salt);
             byte[] hash = HashPass.PBKDF2(password, salt, PBK, HASH_SIZE);
             return Convert.ToBase64String(salt) + ":" + Convert.ToBase64String(hash);
-
-
-            //System.Security.Cryptography.SHA256 sha = System.Security.Cryptography.SHA256.Create();
-            //string hashed = System.Convert.ToBase64String(System.Text.UnicodeEncoding.Unicode.GetBytes(password));
-            //return hashed.Length > 49 ? hashed.Substring(0, 49) : hashed;
 
         }
 
@@ -53,7 +52,6 @@ namespace mvc_project.Models
             byte[] hash = Convert.FromBase64String(split[1]);
             byte[] hashToValidate = HashPass.PBKDF2(password, salt, PBK, hash.Length);
             return HashPass.Equals(hash, hashToValidate);
-
         }
 
     }

@@ -8,9 +8,9 @@ namespace mvc_project.Models
     public class OrderVM
     {
 
-        public OrderVM(List<Order> os)
+        public OrderVM(List<Order> orders)
         {
-            this.orders = os;
+            this.orders = orders;
            
         }
         public List<Order> orders { get; set; }

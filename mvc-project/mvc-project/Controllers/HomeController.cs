@@ -18,26 +18,26 @@ namespace mvc_project.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "About Us";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contact Form";
 
             return View();
         }
 
         public ActionResult Info()
         {
-            ViewBag.Message = " My info page";
+            ViewBag.Message = " Information page";
 
             return View("myInfo");
         }
 
-
+        // contact form, receives message from user and stores it in DB
         public ActionResult contactUs(String name, String email, String comments)
         {
             MessageDAL dal = new MessageDAL();

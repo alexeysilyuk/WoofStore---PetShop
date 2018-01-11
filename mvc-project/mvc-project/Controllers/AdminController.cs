@@ -14,12 +14,13 @@ namespace mvc_project.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+
+            // Get data from DB for all lists
             UserDAL udal = new UserDAL();
             List<User> list_of_users = udal.Users.ToList<User>();
 
             ShopItemDAL idal = new ShopItemDAL();
             List<ShopItem> list_of_items = idal.ShopItems.ToList<ShopItem>();
-
 
             OrderDAL odal = new OrderDAL();
             List<Order> list_of_orders = odal.Orders.ToList<Order>();
@@ -27,18 +28,20 @@ namespace mvc_project.Controllers
             MessageDAL mdal = new MessageDAL();
             List<Message> list_of_message = mdal.Messages.ToList<Message>();
 
+            // If logged as admin, show all data, else redirect to main page
             if (Convert.ToBoolean(Session["admin"]))
-            return View("Index", new AdminViewModel(list_of_users, list_of_items, list_of_orders, list_of_message));
-
-
-            else return View("~/Views/Home/Index.cshtml");
+                return View("Index", new AdminViewModel(list_of_users, list_of_items, list_of_orders, list_of_message));
+            else
+                return View("~/Views/Home/Index.cshtml");
 
         }
 
+
+         //Edit user filds in DB
         [HttpPost]
-        public ActionResult EditUser(String  username, String fname, String lname, String phone, String email, String balance, String password
-            )
+        public ActionResult EditUser(String  username, String fname, String lname, String phone, String email, String balance, String password)
         {
+            // Get user group from session
             if (Convert.ToBoolean(Session["admin"]))
             {
                 UserDAL udal = new UserDAL();
@@ -47,25 +50,20 @@ namespace mvc_project.Controllers
 
 
 
+                // update all user fields
                 if (ModelState.IsValid)
                 {
                     try
                     {
-
                         if (obj != null)
                         {
-                            udal.Users.Remove(obj);
-                            udal.SaveChanges();
-
                             obj.fname = fname;
                             obj.lname = lname;
                             obj.phone = phone;
                             obj.email = email;
                             obj.money = Int32.Parse(balance);
-                            obj.password = password;
                             obj.ecryptedPassword = HashPass.GenerateHash(password);
 
-                            udal.Users.Add(obj);
                             udal.SaveChanges();
                         }
 
@@ -96,26 +94,25 @@ namespace mvc_project.Controllers
         }
 
 
-
+        // Delete user from DB
         [HttpPost]
         public ActionResult DeleteUser(String username)
         {
             UserDAL udal = new UserDAL();
             List<User> list_of_users = udal.Users.ToList<User>();
 
+            // If user have permission to delete
             if (Convert.ToBoolean(Session["admin"]))
             {
-
                 udal = new UserDAL();
                 list_of_users = udal.Users.ToList<User>();
-                var obj = list_of_users.Find(x => x.username == username);
-
+                var obj = list_of_users.Find(x => x.username == username); // find user and remove it
 
                 if (obj != null)
                 {
                     udal.Users.Remove(obj);
                     udal.SaveChanges();
-                    list_of_users = udal.Users.ToList<User>();
+                    list_of_users = udal.Users.ToList<User>(); // return renewed list
                 }
             }
 
@@ -123,16 +120,16 @@ namespace mvc_project.Controllers
         }
 
 
-
+        // Delete item from store
         [HttpPost]
         public ActionResult DeleteItem(String id)
         {
             if (Convert.ToBoolean(Session["admin"]))
             {
-                    ShopItemDAL idal = new ShopItemDAL();
+                ShopItemDAL idal = new ShopItemDAL();
                 List<ShopItem> list_of_items = idal.ShopItems.ToList<ShopItem>();
                 var obj = list_of_items.Find(x => x.Id == Int32.Parse(id));
-
+                // Find and remove choosen item from shop
 
                 if (obj != null)
                 {
@@ -146,27 +143,23 @@ namespace mvc_project.Controllers
 
 
 
-
+        
         [HttpPost]
         public ActionResult EditItem(String iId, String iName, String iDescription, String iPrice, String iPhoto_url)
         {
             if (Convert.ToBoolean(Session["admin"]))
             {
-
-                // edit
+                // if item ID been received, update it's fields
                 if (iId != null && iId != "")
                 {
                     ShopItemDAL idal = new ShopItemDAL();
                     List<ShopItem> list_of_items = idal.ShopItems.ToList<ShopItem>();
                     ShopItem obj = list_of_items.Find(x => x.Id == Int32.Parse(iId));
 
-
-
                     if (ModelState.IsValid)
                     {
                         if (obj != null)
                         {
- 
                             obj.Name = iName;
                             obj.Description = iDescription;
                             obj.price = Int32.Parse(iPrice);
@@ -178,23 +171,22 @@ namespace mvc_project.Controllers
 
                 }
 
-                // add new 
+                // add new if not exists
                 else
                 {
                     ShopItemDAL idal = new ShopItemDAL();
                     List<ShopItem> list_of_items = idal.ShopItems.ToList<ShopItem>();
-                    ShopItem i = new ShopItem();
-                    i.Name = iName;
-                    i.Description = iDescription;
-                    i.price = Int32.Parse(iPrice);
-                    i.photo_url = iPhoto_url;
+                    ShopItem item = new ShopItem();
+                    item.Name = iName;
+                    item.Description = iDescription;
+                    item.price = Int32.Parse(iPrice);
+                    item.photo_url = iPhoto_url;
 
                     if (ModelState.IsValid)
                     {
-                        idal.ShopItems.Add(i);
+                        idal.ShopItems.Add(item);
                         idal.SaveChanges();
-
-                        return Json(i, JsonRequestBehavior.AllowGet);
+                        return Json(item, JsonRequestBehavior.AllowGet);
                     }
                 }
             }
@@ -202,7 +194,7 @@ namespace mvc_project.Controllers
         }
 
 
-
+        // Delete selected order 
         [HttpPost]
         public ActionResult DeleteOrder(String id)
         {
@@ -223,7 +215,7 @@ namespace mvc_project.Controllers
         }
 
 
-
+        // Update status for order
         [HttpPost]
         public ActionResult setStatusOrder(String id, String status)
         {
@@ -233,14 +225,9 @@ namespace mvc_project.Controllers
                 List<Order> list_of_items = idal.Orders.ToList<Order>();
                 var obj = list_of_items.Find(x => x.orderID == Int32.Parse(id));
 
-
                 if (obj != null)
                 {
-                    idal.Orders.Remove(obj);
-                    idal.SaveChanges();
-
                     obj.status = status;
-                    idal.Orders.Add(obj);
                     idal.SaveChanges();
 
                     return Json(obj, JsonRequestBehavior.AllowGet);
@@ -249,7 +236,7 @@ namespace mvc_project.Controllers
             return null;
         }
 
-
+        // delete messages from users
         public ActionResult DeleteMessages(String order)
         {
             if (Convert.ToBoolean(Session["admin"]))

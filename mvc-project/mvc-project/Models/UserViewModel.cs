@@ -8,10 +8,10 @@ namespace mvc_project.Models
     public class UserViewModel
     {
 
-        public UserViewModel(User u, List<User> us)
+        public UserViewModel(User user, List<User> users)
         {
-            this.user = u;
-            this.users = us;
+            this.user = user;
+            this.users = users;
         }
 
         public User user { get; set; }

@@ -35,7 +35,7 @@ namespace mvc_project.Models
         public string username { get; set; }
 
         [Required]
-        [RegularExpression("^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$", ErrorMessage = "Password must contain at least 1 digit, 1 letter and 1 special symbol!")]
+        [RegularExpression("^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$", ErrorMessage = "Password must contain at least 1 digit, 1 letter and 1 special symbol and at least 6 symbols length")]
         public string password { get; set; }
 
         public string ecryptedPassword { get; set; }
@@ -43,6 +43,7 @@ namespace mvc_project.Models
         [Required]
         [Phone]
         public string phone { get; set; }
+
 
 
     }

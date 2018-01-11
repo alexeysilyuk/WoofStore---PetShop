@@ -20,7 +20,7 @@ namespace mvc_project.Controllers
             return View(new UserViewModel(new User(), list_of_users));
         }
 
-
+        // renew al session data if choosen QUIT and redirect to login page
         public ActionResult LogOut()
         {
             Session["login"] = null;
@@ -36,6 +36,8 @@ namespace mvc_project.Controllers
         {
             return View("Login");
         }
+
+        // checking username and password when logging in
         public ActionResult Authorization()
         {
 
@@ -47,10 +49,9 @@ namespace mvc_project.Controllers
                                      where x.username.Contains(searchCriteria)
                                      select x).ToList<User>();
 
-
+            //if user with choosen usernam not been found in database, print error message
             if (resultList.Count == 0)
             {
-
                 ViewBag.Error = "User " + searchCriteria + " not found!";
                 return View("Login");
             }
@@ -61,20 +62,25 @@ namespace mvc_project.Controllers
                 user = resultList.ElementAt(0);
             }
 
-            string receivedPassword = HashPass.GenerateHash(Request.Form["password"]);
+            // encode received password from user, get original password from DB and compare them
+            //string receivedPassword = HashPass.GenerateHash(Request.Form["password"]);
             string dbHashPassowrd = user.ecryptedPassword;
-            if ((HashPass.ValidatePassword(receivedPassword, dbHashPassowrd)))
+
+            // if not equals, print error in VIEW
+            if (!HashPass.ValidatePassword(Request.Form["password"], dbHashPassowrd))
             {
-                ViewBag.Error = "Incorrect password! Try Again";
+                ViewBag.Error = "User name or password are incorrect!";
                 return View("Login", user);
             }
-
+            // if authorization succeed, fill session data
             Session["login"] = user.username;
             Session["admin"] = user.isAdmin;
             Session["money"] = user.money;
             Session["avatar"] = user.photo;
+            //return View("Login", user);
 
             return View("~/Views/Home/Index.cshtml");
+
             //return View("UserArea", user);
         }
 
@@ -86,54 +92,59 @@ namespace mvc_project.Controllers
         public ActionResult Register()
         {
             UserDAL dal = new UserDAL();
-            User obj = new Models.User();
+            User newUser = new Models.User();
 
 
-            obj.fname = Request.Form["fname"];
-            obj.username = Request.Form["username"];
+            newUser.fname = Request.Form["fname"];
+            newUser.username = Request.Form["username"];
             string password = Request.Form["password"];
-            obj.password = "myHappyPassword120!";
-            obj.lname = Request.Form["lname"];
-            obj.money = 1000;
-            obj.photo = Request.Form["photo"];
-            obj.email = Request.Form["email"];
-            obj.phone = Request.Form["phone"];
-            obj.ecryptedPassword = HashPass.GenerateHash(Request.Form["password"]);
-            obj.isAdmin = false;
+            newUser.password = "myHappyPassword120!";       // default password, not really used, just used to check REGEX in user model
+            newUser.lname = Request.Form["lname"];
+            newUser.money = 1000;   // registration bonus
+            newUser.photo = Request.Form["photo"];
+            newUser.email = Request.Form["email"];
+            newUser.phone = Request.Form["phone"];
+            // encrypt user password
+            newUser.ecryptedPassword = HashPass.GenerateHash(Request.Form["password"]);
+            newUser.isAdmin = false;
 
+            // check if user with this username (must be unique) is in DB
             List<User> resultList = (from x in dal.Users
-                                     where x.username.Contains(obj.username)
+                                     where x.username.Contains(newUser.username)
                                      select x).ToList<User>();
+            // if already exists, print error
             if (resultList.Count != 0)
             {
                 ViewBag.Error = "User with this username already exists!";
                 return View("Login");
             }
 
+            // if not, validate model state and add new user to DB
             if (ModelState.IsValid)
             {
                 try
                 {
-                    dal.Users.Add(obj);
+                    dal.Users.Add(newUser);
                     dal.SaveChanges();
                 }
                 catch (DbEntityValidationException)
                 {
                 }
 
-                return View("Login");
+                return View("Login");   // redirect to Login page after registration
             }
             else
                 return View("Login");
 
         }
 
+
+        // show user area
         public ActionResult UserArea()
         {
             if (Session["login"] != null && !(Session["login"].Equals("")))
             {
-                String q = Session["login"].ToString();
-
+ 
                 UserDAL udal = new UserDAL();
                 List<User> list_of_users = udal.Users.ToList<User>();
                 User obj = list_of_users.Find(x => x.username == Session["login"].ToString());
@@ -147,29 +158,28 @@ namespace mvc_project.Controllers
 
 
 
-
+        // User may update him profile 
         public ActionResult updateProfile(String username, String fname, String lname, String email, String phone)
         {
+
+            // find user inf DB
             UserDAL dal = new UserDAL();
             List<User> list_of_users = dal.Users.ToList<User>();
             User obj = list_of_users.Find(x => x.username == username);
 
+           
             if (obj == null)
             {
                 return Json("Error User not exist", JsonRequestBehavior.AllowGet);
             }
-
+            // if found, update profile
             else
             {
-                dal.Users.Remove(obj);
-                dal.SaveChanges();
-
                 obj.fname = fname;
                 obj.lname = lname;
                 obj.email = email;
                 obj.phone = phone;
 
-                dal.Users.Add(obj);
                 dal.SaveChanges();
 
                 return Json("OK", JsonRequestBehavior.AllowGet);
@@ -177,7 +187,7 @@ namespace mvc_project.Controllers
             }
         }
 
-
+        // update to new password, found user in DB and update password
         public ActionResult updatePassword(String username, String password, String cpassword)
         {
             UserDAL dal = new UserDAL();
@@ -191,13 +201,8 @@ namespace mvc_project.Controllers
 
             else
             {
-                dal.Users.Remove(obj);
-                dal.SaveChanges();
-
-                obj.password = password;
                 obj.ecryptedPassword = HashPass.GenerateHash(password);
 
-                dal.Users.Add(obj);
                 dal.SaveChanges();
 
                 return Json("OK", JsonRequestBehavior.AllowGet);
@@ -205,7 +210,7 @@ namespace mvc_project.Controllers
             }
         }
 
-
+        // update user avatar
         public ActionResult updatePhoto(String username, String photo_url)
         {
             UserDAL dal = new UserDAL();
@@ -219,15 +224,10 @@ namespace mvc_project.Controllers
 
             else
             {
-                dal.Users.Remove(obj);
-                dal.SaveChanges();
-
                 obj.photo = photo_url;
-
-                dal.Users.Add(obj);
                 dal.SaveChanges();
 
-                Session["avatar"] = obj.photo;
+                Session["avatar"] = obj.photo;  // renew avatar in homepage
                 return Json(photo_url, JsonRequestBehavior.AllowGet);
 
             }
