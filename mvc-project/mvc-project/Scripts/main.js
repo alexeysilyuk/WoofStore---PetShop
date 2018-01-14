@@ -44,7 +44,7 @@ $(function () {
         $("#lname").val(lname.text());
         $("#fname").val(fname.text());
         $("#balance").val(balance.text());
-        $("#password").val(pass.text());
+       
         $("#username").val(username.text());
         $("#photo_url").val(photo_url.text());
 

@@ -1145,7 +1145,7 @@ a {
     position: absolute;
     top: 50%;
     width: 100px;
-    z-index:100;
+    z-index:1031;
 }
 .osahanloading::after, #preloader::after {
     animation: 1.5s linear 0s normal none infinite running osahanloading_after;
@@ -1179,4 +1179,8 @@ a {
 100% {
     transform: rotate(360deg);
 }
+}
+
+.wdtShop {
+   height:350px;
 }

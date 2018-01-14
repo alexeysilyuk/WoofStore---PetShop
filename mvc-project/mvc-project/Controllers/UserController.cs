@@ -46,7 +46,7 @@ namespace mvc_project.Controllers
 
             string searchCriteria = Request.Form["login"];
             List<User> resultList = (from x in dal.Users
-                                     where x.username.Contains(searchCriteria)
+                                     where x.username.Equals(searchCriteria)
                                      select x).ToList<User>();
 
             //if user with choosen usernam not been found in database, print error message
@@ -73,12 +73,14 @@ namespace mvc_project.Controllers
                 return View("Login", user);
             }
             // if authorization succeed, fill session data
+            resultList.ElementAt(0).money += 10;
+            dal.SaveChanges();
             Session["login"] = user.username;
             Session["admin"] = user.isAdmin;
             Session["money"] = user.money;
             Session["avatar"] = user.photo;
             //return View("Login", user);
-
+            
             return View("~/Views/Home/Index.cshtml");
 
             //return View("UserArea", user);
@@ -110,7 +112,7 @@ namespace mvc_project.Controllers
 
             // check if user with this username (must be unique) is in DB
             List<User> resultList = (from x in dal.Users
-                                     where x.username.Contains(newUser.username)
+                                     where x.username.Equals(newUser.username)
                                      select x).ToList<User>();
             // if already exists, print error
             if (resultList.Count != 0)
